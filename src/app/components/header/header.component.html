@@ -1,15 +1,17 @@
-<!-- logo,nome,search,carrello 
- vedi amazon-->
-<header class="d-flex justify-content-between align-items-center">
-  <div class="d-flex align-items-center">
-    <img src="https://via.placeholder.com/50x50" alt="logo" class="mr-3">
-    <span class="h3">Logo</span>
-  </div>
-  <div class="d-flex align-items-center">
-    <input type="text" class="form-control me-2" placeholder="Search">
-    <a href="#" class="text-dark">
-      <img src="https://via.placeholder.com/30x30" alt="cart">
-    </a>
-  </div>
+<header>
+  <div>
+    <div class="logo">
+      <img class="gilbert" src="https://content-s3.tuttocampo.it/Players/Original/8303709.png?v=9" alt="logo">
+      <span>Gilberto Il Mercante Veneziano</span>
+    </div>
+    <!--<div class="clear"></div>-->
+    <div class="search">
+      <form #searchForm>
+        <input type="search" placeholder="Search">
+      </form>
+      <button (click)="onSubmit(searchForm)">Cerca</button>
+    </div>
+  </div>  
+  <hr>
 </header>
 
