@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.css'
 })
 export class FooterComponent {
-  message : string = "Demo Angular - Pascal 2024"
+  message : string = "Copyright © 2024. All rights reserved to the author.  Made by: Pascal 2024."
 }

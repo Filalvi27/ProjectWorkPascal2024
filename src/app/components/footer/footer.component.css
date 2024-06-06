@@ -1,4 +1,10 @@
 p
 {
     text-align: center;
+    padding-bottom: 15px;
+}
+
+hr{
+    margin-top: 0;
+    margin-bottom: 15px;
 }
