@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { carrelloModel } from '../../models/carrelloModel';
 import { CommonModule } from '@angular/common';
 import { prodottoModel } from '../../models/prodottoModel';
+import {ImgService} from '../../services/img.service';
 
 
 @Component({
@@ -53,7 +54,7 @@ export class CarrelloComponent {
 
   
 
-  constructor() 
+  constructor(private service:ImgService) 
   { 
     this.carrello.push(this.itemProva);
     this.carrello.push(this.itemProva2);
@@ -63,12 +64,12 @@ export class CarrelloComponent {
 
   incrementa(item: prodottoModel)
   {
-    let gg = this.carrello.filter(r => r.id = item.id);
+    let gg = this.carrello.filter(r => r.id == item.id);
     gg[0].quantity++;
   }
 
   decrementa(item: prodottoModel){
-    let gg = this.carrello.filter(r => r.id = item.id);
+    let gg = this.carrello.filter(r => r.id == item.id);
     gg[0].quantity--;
     if(gg[0].quantity<=0){
       this.carrello = this.carrello.filter(x => x.quantity != 0);
@@ -81,6 +82,10 @@ export class CarrelloComponent {
     totale= this.carrello.reduce((acc, item) => acc + (item.price*item.quantity), 0);
     console.log(totale);
     return totale;
+  }
+
+  setImage(item: prodottoModel) {
+    return this.service.getImmagine(item)[0];
   }
 
   

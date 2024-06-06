@@ -10,9 +10,19 @@ export class ImgService {
 
   constructor() { }
 
-    getImmagine(key:string){
-    return `https://storage.googleapis.com/projectworkpascal/${key}`;
-  }
+  //URL
+    getImmagine(item:prodottoModel):string[]{
+
+      let img = item.images.split(';');
+      let key: string[] = [];
+
+      for(let i = 0; i < img.length; i++){
+        key.push(`https://storage.googleapis.com/projectworkpascal/${img[i]}`);
+      }
+
+      // console.log(key);
+    return key;
+    }
 
 
 }
