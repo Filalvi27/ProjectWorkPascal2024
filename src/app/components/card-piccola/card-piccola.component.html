@@ -1,1 +1,15 @@
-<p>card-piccola works!</p>
+<div class="card-deck">
+    <div class="card" style="width: 18rem;" *ngFor="let prodotto of prodotti">
+      <div [routerLink]="[prodotto.id]">
+        <img class="card-img-top" [src]="prodotto.images.split(';')[0]" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{prodotto.title}}</h5>
+          <p class="card-text">{{prodotto.description}}</p>
+          <p class="card-text">Stars: {{prodotto.stars}}</p>
+          <p class="card-text">Price: {{prodotto.price | currency}}</p>
+          <a href="#" class="btn btn-primary">Add to cart</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  

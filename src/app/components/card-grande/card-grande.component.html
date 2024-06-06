@@ -1,1 +1,14 @@
-<p>card-grande works!</p>
+<div *ngIf="prodotto">
+    <hr>
+    <ul>
+      <li><strong>ID:</strong> {{ prodotto.id }}</li>
+      <li><strong>Titolo:</strong> {{ prodotto.title }}</li>
+      <li><strong>Descrizione:</strong> {{ prodotto.description }}</li>
+      <li><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</li>
+      <li><strong>Valutazione:</strong> {{ prodotto.stars }}</li>
+      <li><strong>Categoria ID:</strong> {{ prodotto.idCategory }}</li>
+      <li><strong>Categoria:</strong> {{ prodotto.category.id }} - {{ prodotto.category.name }}</li>
+      <li><img [src]="prodotto.images.split(';')[0]" alt="image"></li>
+    </ul>
+  </div>
+  

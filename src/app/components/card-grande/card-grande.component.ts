@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { prodottoModel } from '../../models/prodottoModel';
+import { ActivatedRoute } from '@angular/router';
+import { ProdottiService } from '../../services/prodotti.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card-grande',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './card-grande.component.html',
-  styleUrl: './card-grande.component.css'
+  styleUrls: ['./card-grande.component.css']
 })
 export class CardGrandeComponent {
+  prodotto: prodottoModel | undefined;
 
+  constructor(private route: ActivatedRoute, private prodottoService: ProdottiService) {
+    const id = +this.route.snapshot.params['id'];
+    this.prodottoService.getProdotto(id).subscribe({
+      next: (data: prodottoModel) => this.prodotto = data,
+      error: (error) => console.log(error)
+    });
+  }
 }
