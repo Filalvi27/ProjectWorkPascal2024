@@ -9,21 +9,21 @@ import { prodottoModel } from '../models/prodottoModel';
 })
 export class ProdottiService {
   private apiUrl = 'https://projectworkapi-z5nzzkwikq-oc.a.run.app/products';
+  //private imageBaseUrl = 'https://storage.googleapis.com/projectworkpascal/';
 
   constructor(private http: HttpClient) {}
 
   getProdotti(): Observable<prodottoModel[]> {
     return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?pagesize=99`)
       .pipe(
-        map(response => response.result)
+        map(response => response.result.map(prodotto => {
+          //prodotto.images = prodotto.images.split(';').map(img => this.imageBaseUrl + img).join(';');
+          return prodotto;
+        }))
       );
   }
 
   getProdotto(id: number): Observable<prodottoModel> {
-    
-    return this.http.get<{ result: prodottoModel }>(`${this.apiUrl}/${id}`)
-      .pipe(
-        map(response => response.result)
-      );
+    return this.http.get<prodottoModel>(`${this.apiUrl}/${id}`);
   }
 }

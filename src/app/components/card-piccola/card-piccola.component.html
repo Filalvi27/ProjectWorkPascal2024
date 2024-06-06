@@ -1,7 +1,6 @@
 <div class="card-deck">
     <div class="card" style="width: 18rem;" *ngFor="let prodotto of prodotti">
-      <div [routerLink]="[prodotto.id]">
-        <img class="card-img-top" [src]="prodotto.images.split(';')[0]" alt="Card image cap">
+      <div [routerLink]="['/card', prodotto.id]" style="cursor: pointer;">
         <div class="card-body">
           <h5 class="card-title">{{prodotto.title}}</h5>
           <p class="card-text">{{prodotto.description}}</p>
@@ -12,4 +11,5 @@
       </div>
     </div>
   </div>
-  
+  <!--        <img class="card-img-top" [src]="'https://storage.googleapis.com/projectworkpascal/' + prodotto.images.split(';')[0]" alt="Card image cap">
+-->

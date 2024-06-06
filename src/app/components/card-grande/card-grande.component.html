@@ -1,14 +1,30 @@
 <div *ngIf="prodotto">
     <hr>
     <ul>
-      <li><strong>ID:</strong> {{ prodotto.id }}</li>
-      <li><strong>Titolo:</strong> {{ prodotto.title }}</li>
-      <li><strong>Descrizione:</strong> {{ prodotto.description }}</li>
-      <li><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</li>
-      <li><strong>Valutazione:</strong> {{ prodotto.stars }}</li>
-      <li><strong>Categoria ID:</strong> {{ prodotto.idCategory }}</li>
-      <li><strong>Categoria:</strong> {{ prodotto.category.id }} - {{ prodotto.category.name }}</li>
-      <li><img [src]="prodotto.images.split(';')[0]" alt="image"></li>
+        <!--<img src="{{ prodotto.images }}" alt="image">-->
+        <li>
+            <p><strong>ID:</strong> {{ prodotto.id }}</p>
+        </li>
+        <li>
+            <p><strong>Titolo:</strong> {{ prodotto.title }}</p>
+        </li>
+        <li>
+            <p><strong>Description:</strong> {{ prodotto.description }}</p>
+        </li>
+        <li>
+            <p><strong>price:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
+        </li>
+        <li>
+            <p><strong>stars:</strong> {{ prodotto.stars }}</p>
+        </li>
+        <li>
+            <p><strong>idCategory:</strong> {{ prodotto.idCategory }}</p>
+        </li>
+        <li>
+            <p><strong>Categorie:</strong> {{ prodotto.category.id }} - {{ prodotto.category.name }}</p>
+        </li>
+
     </ul>
-  </div>
-  
+
+
+</div>
