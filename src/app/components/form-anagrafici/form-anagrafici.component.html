@@ -1,1 +1,72 @@
-<p>form-anagrafici works!</p>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+    <!-- Sezione dettagli cliente -->
+     <!--dirty = verifica se il metodo o qualunque cosa sia è stato modificato dal suo valore, in questo caso se si non può più cambiare-->
+    <div *ngIf="!sezionePagamento">
+        <div>
+            <label for="clientName">Nome Cliente:</label>
+            <input id="clientName" formControlName="clientName" type="text" required>
+            <div *ngIf="checkoutForm.get('clientName')?.invalid && (checkoutForm.get('clientName')?.dirty || checkoutForm.get('clientName')?.touched)">
+                Nome Cliente è richiesto
+            </div>
+        </div>
+        
+        <div>
+            <label for="address">Indirizzo:</label>
+            <input id="address" formControlName="address" type="text" required>
+            <div *ngIf="checkoutForm.get('address')?.invalid && (checkoutForm.get('address')?.dirty || checkoutForm.get('address')?.touched)">
+                Indirizzo è richiesto
+            </div>
+        </div>
+        
+        <div>
+            <label for="totalPrice">Prezzo Totale:</label>
+            <input id="totalPrice" formControlName="totalPrice" type="number" required>
+            <div *ngIf="checkoutForm.get('totalPrice')?.invalid && (checkoutForm.get('totalPrice')?.dirty || checkoutForm.get('totalPrice')?.touched)">
+                Prezzo Totale deve essere un valore positivo
+            </div>
+        </div>
+      
+        <div>
+            <button type="button" (click)="sezionePagamento = true" [disabled]="checkoutForm.get('clientName')?.invalid || checkoutForm.get('address')?.invalid || checkoutForm.get('totalPrice')?.invalid">Avanti</button>
+        </div>
+    </div>
+
+    <!-- Sezione dettagli pagamento -->
+    <div *ngIf="sezionePagamento">
+        <fieldset formGroupName="pagamento">
+            <div>
+                <label for="number">Numero di Carta:</label>
+                <input id="number" formControlName="number" type="text" [readonly]="controlloDettagli" required>
+                <div *ngIf="checkoutForm.get('pagamento.number')?.invalid && (checkoutForm.get('pagamento.number')?.dirty || checkoutForm.get('pagamento.number')?.touched)">
+                    Numero di Carta è richiesto
+                </div>
+            </div>
+            
+            <div>
+                <label for="ownerName">Nome del Proprietario:</label>
+                <input id="ownerName" formControlName="ownerName" type="text" [readonly]="controlloDettagli" required>
+                <div *ngIf="checkoutForm.get('pagamento.ownerName')?.invalid && (checkoutForm.get('pagamento.ownerName')?.dirty || checkoutForm.get('pagamento.ownerName')?.touched)">
+                    Nome del Proprietario è richiesto
+                </div>
+            </div>
+            
+            <div>
+                <label for="expire">Data di Scadenza:</label>
+                <input id="expire" formControlName="expire" type="text" [readonly]="controlloDettagli" required>
+                <div *ngIf="checkoutForm.get('pagamento.expire')?.invalid && (checkoutForm.get('pagamento.expire')?.dirty || checkoutForm.get('pagamento.expire')?.touched)">
+                    Data di Scadenza è richiesta
+                </div>
+            </div>
+            
+            <div>
+                <label for="cvv">CVV:</label>
+                <input id="cvv" formControlName="cvv" type="number" [readonly]="controlloDettagli" required>
+                <div *ngIf="checkoutForm.get('pagamento.cvv')?.invalid && (checkoutForm.get('pagamento.cvv')?.dirty || checkoutForm.get('pagamento.cvv')?.touched)">
+                    CVV è richiesto e deve essere di 3 o 4 cifre
+                </div>
+            </div>
+        </fieldset>
+        <button type="button" (click)="submitPagamentoDetails()" [disabled]="controlloDettagli">Invia</button>
+    </div>
+</form>
