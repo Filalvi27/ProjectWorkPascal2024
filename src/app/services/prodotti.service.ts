@@ -16,7 +16,7 @@ export class ProdottiService {
 
 
   getProdotti(): Observable<prodottoModel[]> {
-    return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?pagesize=99`)
+    return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?pagesize=12`)
       .pipe(
         map(response => response.result.map(prodotto => {
           //prodotto.images = prodotto.images.split(';').map(img => this.imageBaseUrl + img).join(';');
