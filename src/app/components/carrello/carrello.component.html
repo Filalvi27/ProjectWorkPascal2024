@@ -1,1 +1,41 @@
-<p>carrello works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Prodotto</th>
+            <th></th>
+            <th>Prezzo</th>
+            <th>Quantità</th>
+            <th>Totale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of carrello">
+            <!-- <td><img src="{{item.images}}" class="img-fluid" alt=""></td> -->
+            <td><img src="{{setImage(item)}}" class="img-fluid" alt="" style="width:100px;height:100px;"></td>
+            <td>{{item.title}}</td>
+            <td>{{item.price}} €</td>
+            <td>
+              <button class="btn btn-secondary btn-sm" (click)="incrementa(item)">+</button>
+              {{item.quantity}}
+              <button class="btn btn-secondary btn-sm" (click)="decrementa(item)">-</button>
+            </td>
+            <td>{{item.price * item.quantity}} €</td>
+            <!-- <td>{{item.price}} €</td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <h5 class="card-header">Riepilogo ordine</h5>
+        <div class="card-body">
+          <h5 class="card-title">Totale: {{calcolaTotale()}} €</h5>
+          <a routerLink="/formAnagrafici" class="btn btn-primary">Vai al pagamento</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

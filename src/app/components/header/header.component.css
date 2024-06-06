@@ -1,0 +1,52 @@
+.gilbert{
+    width: 50px;
+    height: 50px;
+    margin-right: 20px; 
+}
+
+
+.logo {
+    float: left;
+    width: 25%;
+}
+
+.clear{
+    clear: both;
+}
+
+.btn_cerca{
+    width: 30px;
+    height: 30px;
+    margin-left: 0px;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    height: 50px;
+    align-items: center;
+    margin-left: 100px;
+}
+
+span{
+    font-weight: bold;
+    font-size: large;
+}
+
+form{
+    width: 80%;
+}
+input{
+    width: 100%;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+hr{
+    margin: 0;
+    border: 1px solid black;
+}
+a{
+    margin-left: 40px;
+}

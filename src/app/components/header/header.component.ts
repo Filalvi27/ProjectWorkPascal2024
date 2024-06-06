@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Reactive } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-header',
@@ -9,4 +10,15 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  searchText = '';
+
+  onSubmit(form: HTMLFormElement) {
+    const searchInput = form.querySelector('input[type="search"]');
+    this.searchText = (searchInput as HTMLInputElement).value;
+    // Cancello il contenuto dell'input
+    (searchInput as HTMLInputElement).value = '';
+    console.log("Cerca: " + this.searchText);
+  }
+  
 }
+
