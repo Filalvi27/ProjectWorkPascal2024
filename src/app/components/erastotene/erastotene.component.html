@@ -1,0 +1,49 @@
+<h2>Crivello di Erastotene</h2>
+<p>Calcolo dei numeri primi &lt;= {{n}}</p>
+
+<div class="d-flex justify-content-between">
+    <div class="d-flex align-items-center my-2">
+        <!--<div class="cella primo"></div>-->
+        <app-erastotene-cella [testo]="''" [primo]="true" ></app-erastotene-cella>
+        <div class="ms-2">indica un numero primo</div>
+    </div>
+    <div class="d-flex align-items-center my-2">
+        <!--<div class="cella nonprimo"></div>-->
+        <app-erastotene-cella [testo]="''" [primo]="false" ></app-erastotene-cella>
+        <div class="ms-2">indica un numero non primo</div>
+    </div>
+</div>
+
+
+<form class="py-2" [formGroup]="inputForm" (ngSubmit)="calcola()">
+    <div class="mb-3">    
+        <label for="numero" class="form-label"></label>    
+        <input type="number" class="form-control" name="numero" id="numero" formControlName="n">
+        <small class="text-danger" *ngIf="inputForm.get('n')?.hasError('min')">Richiesto > 0</small>
+        <small class="text-danger" *ngIf="inputForm.get('n')?.hasError('max')">Richiesto &lt; 100000</small>
+    </div>
+    <div class="mb-3 d-flex justify-content-between">
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="soloPrimi" formControlName="soloPrimi">
+            <label class="form-check-label" for="soloPrimi">Solo numeri primi</label>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Calcola" [disabled]="!canSubmit" >
+            <input type="button" class="btn btn-secondary" value="Pulisci">
+        </div>
+    </div>
+</form>
+
+
+<div class="d-flex flex-wrap my-5">
+    <ng-container *ngFor="let numero of numeri; index as i">
+        <!--<div *ngIf="i!=0" class="cella" 
+            [class.nonprimo] ="numero == false"
+            [class.primo] ="numero != false"   
+            (click)="click(i)"
+        >{{i}}</div>-->
+        <app-erastotene-cella *ngIf="i!=0" [testo]="i.toString()" [primo]="numero!=false" 
+            (clicked)="click(i)"
+        ></app-erastotene-cella>
+    </ng-container>
+</div>

@@ -1,0 +1,30 @@
+<h1>Utenti</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngIf="users.length>0">
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td> 
+                   <!-- <a [href]=" 'utenti/' + user.id ">Dettaglio &gt;</a> -->
+                   <a [routerLink]=" [user.id] ">Dettaglio &gt;</a>
+                </td>
+            </tr>
+        </ng-container>
+        <tr *ngIf="users.length==0">
+            <td colspan="4">Nessun utente presente</td>
+        </tr>
+    </tbody>
+</table>
