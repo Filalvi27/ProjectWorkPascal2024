@@ -10,5 +10,6 @@ export interface prodottoModel{
         id: number
         name: string
         image: string
-    }
+    },
+    quantity: number
 }
