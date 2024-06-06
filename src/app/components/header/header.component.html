@@ -6,12 +6,10 @@
     </div>
     <!--<div class="clear"></div>-->
     <div class="search">
-      <form>
+      <form #searchForm>
         <input type="search" placeholder="Search">
       </form>
-      <a href="/cerca">
-        <img class="btn_cerca" src="https://www.computerhope.com/jargon/s/search-icon.png" alt="cart">
-      </a>
+      <button (click)="onSubmit(searchForm)">Cerca</button>
     </div>
   </div>  
   <hr>
