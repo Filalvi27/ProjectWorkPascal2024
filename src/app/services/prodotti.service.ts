@@ -3,9 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { prodottoModel } from '../models/prodottoModel';
-=======
-import {HttpClient} from "@angular/common/http";
-import {prodottoModel} from "../models/prodottoModel";
 
 
 @Injectable({
@@ -30,16 +27,5 @@ export class ProdottiService {
 
   getProdotto(id: number): Observable<prodottoModel> {
     return this.http.get<prodottoModel>(`${this.apiUrl}/${id}`);
-
-  //generica
-  getProdotti(){
-    return this.http.get<prodottoModel[]>(`https://projectworkapi-z5nzzkwikq-oc.a.run.app/products?pagesize=99`);
-  }
-
-  
-  //prodotto specifica con id 
-  getProdotto(id:number){
-    return this.http.get<prodottoModel>(`https://projectworkapi-z5nzzkwikq-oc.a.run.app/products/${id}`);
-
   }
 }

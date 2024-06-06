@@ -10,5 +10,7 @@ export const routes: Routes = [
      { path:'', component: HomeComponent },
      { path:'formAnagrafici', component: FormAnagraficiComponent },
      { path:'cart', component:CarrelloComponent },  
+     { path:'card', component:CardPiccolaComponent },
+     { path:'card/:id', component:CardGrandeComponent },
      { path:'**', component:NotfoundComponent }
  ];

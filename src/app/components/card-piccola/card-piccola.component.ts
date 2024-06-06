@@ -14,8 +14,8 @@ import { ProdottiService } from '../../services/prodotti.service';
 export class CardPiccolaComponent {
   prodotti: prodottoModel[] = [];
 
-  constructor(private prodottiService: ProdottiService) {
-    this.prodottiService.getProdotti().subscribe({
+  constructor(private ProdottiService: ProdottiService) {
+    this.ProdottiService.getProdotti().subscribe({
       next: prodotti => this.prodotti = prodotti,
       error: error => console.error(error)
     });

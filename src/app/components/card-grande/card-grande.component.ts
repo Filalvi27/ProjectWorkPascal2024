@@ -14,9 +14,9 @@ import { CommonModule } from '@angular/common';
 export class CardGrandeComponent {
   prodotto: prodottoModel | undefined;
 
-  constructor(private route: ActivatedRoute, private prodottoService: ProdottiService) {
+  constructor(private route: ActivatedRoute, private ProdottoService: ProdottiService) {
     const id = +this.route.snapshot.params['id'];
-    this.prodottoService.getProdotto(id).subscribe({
+    this.ProdottoService.getProdotto(id).subscribe({
       next: (data: prodottoModel) => this.prodotto = data,
       error: (error) => console.log(error)
     });
