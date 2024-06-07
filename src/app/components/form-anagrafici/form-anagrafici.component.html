@@ -1,7 +1,9 @@
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+        
+    <div>
+        <label for="totalPrice" >Prezzo Totale {{totale | currency}}:</label>
+    </div>
 
-    <!-- Sezione dettagli cliente -->
-     <!--dirty = verifica se il metodo o qualunque cosa sia è stato modificato dal suo valore, in questo caso se si non può più cambiare-->
     <div *ngIf="!sezionePagamento">
         <div>
             <label for="clientName">Nome Cliente:</label>
@@ -18,55 +20,198 @@
                 Indirizzo è richiesto
             </div>
         </div>
-        
-        <div>
-            <label for="totalPrice">Prezzo Totale:</label>
-            <input id="totalPrice" formControlName="totalPrice" type="number" required>
-            <div *ngIf="checkoutForm.get('totalPrice')?.invalid && (checkoutForm.get('totalPrice')?.dirty || checkoutForm.get('totalPrice')?.touched)">
-                Prezzo Totale deve essere un valore positivo
-            </div>
-        </div>
       
         <div>
             <button type="button" (click)="sezionePagamento = true" [disabled]="checkoutForm.get('clientName')?.invalid || checkoutForm.get('address')?.invalid || checkoutForm.get('totalPrice')?.invalid">Avanti</button>
         </div>
     </div>
 
-    <!-- Sezione dettagli pagamento -->
     <div *ngIf="sezionePagamento">
-        <fieldset formGroupName="pagamento">
-            <div>
-                <label for="number">Numero di Carta:</label>
-                <input id="number" formControlName="number" type="text" [readonly]="controlloDettagli" required>
-                <div *ngIf="checkoutForm.get('pagamento.number')?.invalid && (checkoutForm.get('pagamento.number')?.dirty || checkoutForm.get('pagamento.number')?.touched)">
-                    Numero di Carta è richiesto
+            <fieldset formGroupName="payment">
+                <div>
+                    <label for="number">Numero di Carta:</label>
+                    <input id="number" formControlName="payment.number" type="text"  required>
+                    <div *ngIf="checkoutForm.get('pagamento.number')?.invalid && (checkoutForm.get('pagamento.number')?.dirty || checkoutForm.get('pagamento.number')?.touched)">
+                        Numero di Carta è richiesto
+                    </div>
                 </div>
-            </div>
-            
-            <div>
-                <label for="ownerName">Nome del Proprietario:</label>
-                <input id="ownerName" formControlName="ownerName" type="text" [readonly]="controlloDettagli" required>
-                <div *ngIf="checkoutForm.get('pagamento.ownerName')?.invalid && (checkoutForm.get('pagamento.ownerName')?.dirty || checkoutForm.get('pagamento.ownerName')?.touched)">
-                    Nome del Proprietario è richiesto
+                
+                <div>
+                    <label for="ownerName">Nome del Proprietario:</label>
+                    <input id="ownerName" formControlName="payment.ownerName" type="text" required>
+                    <div *ngIf="checkoutForm.get('pagamento.ownerName')?.invalid && (checkoutForm.get('pagamento.ownerName')?.dirty || checkoutForm.get('pagamento.ownerName')?.touched)">
+                        Nome del Proprietario è richiesto
+                    </div>
                 </div>
-            </div>
-            
-            <div>
-                <label for="expire">Data di Scadenza:</label>
-                <input id="expire" formControlName="expire" type="text" [readonly]="controlloDettagli" required>
-                <div *ngIf="checkoutForm.get('pagamento.expire')?.invalid && (checkoutForm.get('pagamento.expire')?.dirty || checkoutForm.get('pagamento.expire')?.touched)">
-                    Data di Scadenza è richiesta
+                
+                <div>
+                    <label for="expire">Data di Scadenza:</label>
+                    <input id="expire" formControlName="payment.expire" type="text"  required>
+                    <div *ngIf="checkoutForm.get('pagamento.expire')?.invalid && (checkoutForm.get('pagamento.expire')?.dirty || checkoutForm.get('pagamento.expire')?.touched)">
+                        Data di Scadenza è richiesta
+                    </div>
                 </div>
-            </div>
-            
-            <div>
-                <label for="cvv">CVV:</label>
-                <input id="cvv" formControlName="cvv" type="number" [readonly]="controlloDettagli" required>
-                <div *ngIf="checkoutForm.get('pagamento.cvv')?.invalid && (checkoutForm.get('pagamento.cvv')?.dirty || checkoutForm.get('pagamento.cvv')?.touched)">
-                    CVV è richiesto e deve essere di 3 o 4 cifre
+                <div>
+                    <label for="cvv">CVV:</label>
+                    <input id="cvv" formControlName="payment.cvv" type="number"  required>
+                    <div *ngIf="checkoutForm.get('pagamento.cvv')?.invalid && (checkoutForm.get('pagamento.cvv')?.dirty || checkoutForm.get('pagamento.cvv')?.touched)">
+                        CVV è richiesto e deve essere di 3 o 4 cifre
+                    </div>
                 </div>
-            </div>
-        </fieldset>
-        <button type="button" (click)="submitPagamentoDetails()" [disabled]="controlloDettagli">Invia</button>
+            </fieldset>
+            <button type="button" (click)="submitPagamentoDetails()" >Invia</button>
+
+            <button type="button" (click)="sezionePagamento = false">Indietro</button>
+            [disabled]="controlloDettagli"
     </div>
 </form>
+ -->
+
+
+
+<form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="totalPrice">Prezzo Totale {{totale | currency}}:</label>
+    </div>
+
+    <div *ngIf="showfirst">
+        <!-- <input type="text" formControlName="input1" required>
+        <input type="text" formControlName="input2" required>
+        <input type="text" formControlName="input3" required> -->
+
+
+        <div>
+            <label for="clientName">Client Name:</label>
+            <input type="text" id="clientName" formControlName="clientName" required>
+        </div>
+
+        <div>
+            <label for="address">Address:</label>
+            <input type="text" id="address" formControlName="address" required>
+        </div>
+
+
+        <button type="submit" [disabled]="!inputForm.get('clientName')?.valid || !inputForm.get('address')?.valid" (click)="showfirst = false ">Submit</button>
+    </div>
+
+    <div *ngIf="!showfirst">
+        <!-- <input type="text" formControlName="input4" required>
+        <input type="text" formControlName="input5" required>
+        <input type="text" formControlName="input6" required> -->
+
+        <div>
+            <label for="paymentNumber">Payment Number:</label>
+            <input type="text" id="paymentNumber" formControlName="paymentNumber" required>
+        </div>
+        <div>
+            <label for="paymentOwnerName">Owner Name:</label>
+            <input type="text" id="paymentOwnerName" formControlName="paymentOwnerName" required>
+        </div>
+        <div>
+            <label for="paymentExpire">Expire:</label>
+            <input type="text" id="paymentExpire" formControlName="paymentExpire" required>
+        </div>
+        <div>
+            <label for="paymentCvv">CVV:</label>
+            <input type="number" id="paymentCvv" formControlName="paymentCvv" required>
+        </div>
+
+
+        <button type="submit" [disabled]="!canSubmit" >Submit</button>
+        <button type="button" (click)="showfirst = true">Indietro</button>
+        <!-- <button type="button" (click)="showFirstThree = true">First Three</button> -->
+    </div>
+
+</form>
+
+
+<!-- 
+<form class="py-2" [formGroup]="inputForm" (ngSubmit)="calcola()">
+    <div>
+      <label for="clientName">Client Name:</label>
+      <input type="text" id="clientName" formControlName="clientName">
+    </div>
+    <div>
+      <label for="address">Address:</label>
+      <input type="text" id="address" formControlName="address">
+    </div>
+    <div>
+      <label for="totalPrice">Total Price:</label>
+      <input type="number" id="totalPrice" formControlName="totalPrice">
+    </div>
+    <div>
+      <label for="paymentNumber">Payment Number:</label>
+      <input type="text" id="paymentNumber" formControlName="paymentNumber">
+    </div>
+    <div>
+      <label for="paymentOwnerName">Owner Name:</label>
+      <input type="text" id="paymentOwnerName" formControlName="paymentOwnerName">
+    </div>
+    <div>
+      <label for="paymentExpire">Expire:</label>
+      <input type="text" id="paymentExpire" formControlName="paymentExpire">
+    </div>
+    <div>
+      <label for="paymentCvv">CVV:</label>
+      <input type="number" id="paymentCvv" formControlName="paymentCvv">
+    </div>
+    <button type="submit" [disabled]="!canSubmit">Submit</button>
+  </form>
+   -->
+
+   <!--main.ts:5 ERROR 
+Error: NG01050: formControlName must be used with a parent formGroup directive.  You'll want to add a formGroup
+      directive and pass it an existing FormGroup instance (you can create one in your class).
+
+    Example:
+
+    
+  <div [formGroup]="myGroup">
+    <input formControlName="firstName">
+  </div>
+
+  In your class:
+
+  this.myGroup = new FormGroup({
+      firstName: new FormControl()
+  });
+    at controlParentException (forms.mjs:1555:10)
+    at _FormControlName._checkParentType (forms.mjs:5902:15)
+    at _FormControlName._setUpControl (forms.mjs:5907:10)
+    at _FormControlName.ngOnChanges (forms.mjs:5857:28)
+    at _FormControlName.rememberChangeHistoryAndInvokeOnChangesHook (core.mjs:4101:14)
+    at callHookInternal (core.mjs:5136:14)
+    at callHook (core.mjs:5167:9)
+    at callHooks (core.mjs:5118:17)
+    at executeInitAndCheckHooks (core.mjs:5068:9)
+    at refreshView (core.mjs:12806:21)-->
+
+    <!--core.mjs:6531 ERROR 
+Error: NG01050: formControlName must be used with a parent formGroup directive.  You'll want to add a formGroup
+      directive and pass it an existing FormGroup instance (you can create one in your class).
+
+    Example:
+
+    
+  <div [formGroup]="myGroup">
+    <input formControlName="firstName">
+  </div>
+
+  In your class:
+
+  this.myGroup = new FormGroup({
+      firstName: new FormControl()
+  });
+    at controlParentException (forms.mjs:1555:10)
+    at _FormControlName._checkParentType (forms.mjs:5902:15)
+    at _FormControlName._setUpControl (forms.mjs:5907:10)
+    at _FormControlName.ngOnChanges (forms.mjs:5857:28)
+    at _FormControlName.rememberChangeHistoryAndInvokeOnChangesHook (core.mjs:4101:14)
+    at callHookInternal (core.mjs:5136:14)
+    at callHook (core.mjs:5167:9)
+    at callHooks (core.mjs:5118:17)
+    at executeInitAndCheckHooks (core.mjs:5068:9)
+    at refreshView (core.mjs:12806:21)
+﻿
+
+-->

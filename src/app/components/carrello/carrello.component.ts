@@ -6,12 +6,13 @@ import {ImgService} from '../../services/img.service';
 import {ProdottiService} from '../../services/prodotti.service';
 import {CarrelloService} from '../../services/carrello.service';
 
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-carrello',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './carrello.component.html',
   styleUrl: './carrello.component.css'
 })
@@ -93,6 +94,8 @@ export class CarrelloComponent {
     let totale = 0;
     totale= this.carrello.reduce((acc, item) => acc + (item.price*item.quantity), 0);
     // console.log(totale);
+
+    this.serviceC.setTotale(totale);
     return totale;
   }
 

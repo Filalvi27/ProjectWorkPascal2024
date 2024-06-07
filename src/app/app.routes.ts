@@ -8,7 +8,7 @@ import { CardGrandeComponent } from './components/card-grande/card-grande.compon
 
 export const routes: Routes = [
      //{ path:'', component: HomeComponent },
-     { path:'', component:CardPiccolaComponent },
+     { path:'', component:HomeComponent },
      { path:'formAnagrafici', component: FormAnagraficiComponent },
      { path:'cart', component:CarrelloComponent },  
      { path:'card/:id', component:CardGrandeComponent },

@@ -9,6 +9,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
-export class SideBarComponent {
 
+export class SideBarComponent {
+  toggleSidebar() {
+    const sidebar = document.getElementById('sidebar') as HTMLDivElement;
+    if (sidebar.classList.contains('active')) {
+      sidebar.classList.remove('active');
+    } else {
+      sidebar.classList.add('active');
+    }
+  }
 }

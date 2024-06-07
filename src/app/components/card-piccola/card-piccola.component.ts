@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { prodottoModel } from '../../models/prodottoModel';
@@ -13,17 +13,11 @@ import { ImgService } from '../../services/img.service';
   styleUrls: ['./card-piccola.component.css']
 })
 export class CardPiccolaComponent {
-  prodotti: prodottoModel[] = [];
+  @Input() prodotti: prodottoModel[] = [];
 
-  constructor(private prodottiService: ProdottiService,private service:ImgService) {
-    this.prodottiService.getProdotti().subscribe({
-      next: prodotti => this.prodotti = prodotti,
-      error: error => console.error(error)
-    });
-  }
-  
+  constructor(private service: ImgService) {}
+
   setImage(item: prodottoModel) {
     return this.service.getImmagine(item)[0];
   }
-
 }

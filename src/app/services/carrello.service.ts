@@ -8,7 +8,7 @@ import { prodottoModel } from '../models/prodottoModel';
 export class CarrelloService {
 
   carrello: prodottoModel[] = [];
-
+  totale: number = 0;
   constructor() { }
 
   getCarrello():prodottoModel[] {
@@ -74,4 +74,12 @@ export class CarrelloService {
   //   console.log("aggiungi fatto");
 
   // }
+  setTotale(totale:number) {
+    this.totale = totale;
+  }
+
+  getTotale():number {
+    return this.totale;
+  }
+
 }

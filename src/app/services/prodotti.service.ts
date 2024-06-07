@@ -15,8 +15,8 @@ export class ProdottiService {
   constructor(private http: HttpClient) {}
 
 
-  getProdotti(): Observable<prodottoModel[]> {
-    return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?pagesize=12`)
+  getProdotti(n:number): Observable<prodottoModel[]> {
+    return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?page=${n}&pagesize=10`)
       .pipe(
         map(response => response.result.map(prodotto => {
           //prodotto.images = prodotto.images.split(';').map(img => this.imageBaseUrl + img).join(';');
@@ -24,6 +24,7 @@ export class ProdottiService {
         }))
       );
   }
+
 
   getProdotto(id: number): Observable<prodottoModel> {
     console.log("getProdotto fatto");

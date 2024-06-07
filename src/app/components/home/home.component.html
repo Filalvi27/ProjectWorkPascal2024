@@ -1,3 +1,26 @@
+<div>
+  <app-card-piccola [prodotti]="prodotti"></app-card-piccola>
+</div>
 
-
-
+<div class="container">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" (click)="onPageSelect(currentPage - 1)" [class.disabled]="currentPage === 1" *ngIf="currentPage > 1">
+        <a class="page-link" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" [class.active]="currentPage === 1"><a class="page-link" (click)="onPageSelect(1)">1</a></li>
+      <li class="page-item" [class.active]="currentPage === 2"><a class="page-link" (click)="onPageSelect(2)">2</a></li>
+      <li class="page-item" [class.active]="currentPage === 3"><a class="page-link" (click)="onPageSelect(3)">3</a></li>
+      <li class="page-item" [class.active]="currentPage === 4"><a class="page-link" (click)="onPageSelect(4)">4</a></li>
+      <li class="page-item" [class.active]="currentPage === 5"><a class="page-link" (click)="onPageSelect(5)">5</a></li>
+      <li class="page-item" (click)="onPageSelect(currentPage + 1)"  [class.disabled]="currentPage === 5" *ngIf="currentPage < 5  
+      k">
+        <a class="page-link" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

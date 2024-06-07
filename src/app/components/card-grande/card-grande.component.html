@@ -1,37 +1,35 @@
 <div *ngIf="prodotto">
     <hr>
-    <ul>
-        <!--<img src="{{ prodotto.images }}" alt="image">-->
-        <li>
-            <p><strong>ID:</strong> {{ prodotto.id }}</p>
-        </li>
-        <li>
-            <p><strong>Titolo:</strong> {{ prodotto.title }}</p>
-        </li>
-        <li>
-            <p><strong>Description:</strong> {{ prodotto.description }}</p>
-        </li>
-        <li>
-            <p><strong>price:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
-        </li>
-        <li>
-            <p><strong>stars:</strong> {{ prodotto.stars }}</p>
-        </li>
-        <li>
-            <p><strong>idCategory:</strong> {{ prodotto.idCategory }}</p>
-        </li>
-        <li>
-            <p><strong>Categorie:</strong> {{ prodotto.category.id }} - {{ prodotto.category.name }}</p>
-        </li>
+    <div class="text-center">
+            <h1><strong> {{ prodotto.title }}</strong></h1>
 
-    </ul>
-    <a class="btn btn-primary" (click)="aggiungiAlCarrello()"  
-    *ngIf="!prodotto.addedToCart">Add to cart</a>
+        <!-- Carousel -->
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="max-width: 500px; margin: 0 auto;">
+            <div class="carousel-inner">
+                <div *ngFor="let image of getImmagini(prodotto); let i = index" class="carousel-item" [ngClass]="{'active': i === 0}">
+                    <img [src]="image" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- End of Carousel -->
+            <p><strong>Description:</strong> {{ prodotto.description }}</p>
+            <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
+            <p><strong>Rating:</strong> {{ prodotto.stars }}</p>
+            <p><strong>Categoria:</strong>{{ prodotto.category.name }}</p>
+    </div>
+    <a class="btn btn-primary" (click)="aggiungiAlCarrello()" *ngIf="!prodotto.addedToCart">Add to cart</a>
     <div class="text-success" *ngIf="prodotto.addedToCart">
         <i class="fa fa-check"></i>
-      </div>
-      <div class="text-danger" *ngIf="prodotto.addedToCart === false">
+    </div>
+    <div class="text-danger" *ngIf="prodotto.addedToCart === false">
         <i class="fa fa-times"></i>
-      </div>
-
+    </div>
 </div>

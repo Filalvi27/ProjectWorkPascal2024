@@ -23,13 +23,19 @@ export class CardGrandeComponent {
     });
   }
 
-
-  aggiungiAlCarrello(){
+  aggiungiAlCarrello() {
     const id = +this.route.snapshot.params['id'];
     this.prodottoService.getProdotto(id).subscribe({
-      next: (data: prodottoModel) => {this.prodotto = data; this.serviceC.aggiungiCarello(this.prodotto)},
+      next: (data: prodottoModel) => {
+        this.prodotto = data;
+        this.serviceC.aggiungiCarello(this.prodotto)
+      },
       error: (error) => console.log(error)
     });
     console.log("aggiungi al carrello fatto");
-   }
+  }
+
+  getImmagini(prodotto: prodottoModel): string[] {
+    return prodotto.images.split(';').map(img => `https://storage.googleapis.com/projectworkpascal/${img}`);
+  }
 }

@@ -1,4 +1,4 @@
-export interface utenteCheckout {
+export interface utenteCheckoutModel {
     clientName: string;
     address: string;
     totalPrice: number;
@@ -8,10 +8,10 @@ export interface utenteCheckout {
         expire: string;
         cvv: number;
     };
-    details: prodottoPiccolo[];
+    details: prodottoPiccoloModel[];
 }
 
-export interface prodottoPiccolo{
+export interface prodottoPiccoloModel{
     idproduct:number;
     quantity:number;
 }

@@ -4,3 +4,7 @@
 .clear{
     clear: both;
 }
+
+.card-deck{
+    width: 100%;
+}
