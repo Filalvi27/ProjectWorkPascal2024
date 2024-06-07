@@ -7,10 +7,10 @@ import { CardPiccolaComponent } from './components/card-piccola/card-piccola.com
 import { CardGrandeComponent } from './components/card-grande/card-grande.component';
 
 export const routes: Routes = [
-     { path:'', component: HomeComponent },
+     //{ path:'', component: HomeComponent },
+     { path:'', component:CardPiccolaComponent },
      { path:'formAnagrafici', component: FormAnagraficiComponent },
      { path:'cart', component:CarrelloComponent },  
-     { path:'card', component:CardPiccolaComponent },
      { path:'card/:id', component:CardGrandeComponent },
      { path:'**', component:NotfoundComponent }
  ];
