@@ -25,6 +25,13 @@
         </li>
 
     </ul>
-
+    <a class="btn btn-primary" (click)="aggiungiAlCarrello()"  
+    *ngIf="!prodotto.addedToCart">Add to cart</a>
+    <div class="text-success" *ngIf="prodotto.addedToCart">
+        <i class="fa fa-check"></i>
+      </div>
+      <div class="text-danger" *ngIf="prodotto.addedToCart === false">
+        <i class="fa fa-times"></i>
+      </div>
 
 </div>

@@ -26,6 +26,7 @@ export class ProdottiService {
   }
 
   getProdotto(id: number): Observable<prodottoModel> {
+    console.log("getProdotto fatto");
     return this.http.get<prodottoModel>(`${this.apiUrl}/${id}`);
   }
 }

@@ -11,5 +11,6 @@ export interface prodottoModel{
         name: string
         image: string
     },
-    quantity: number
+    quantity: number,
+    addedToCart: boolean
 }

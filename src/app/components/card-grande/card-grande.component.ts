@@ -3,6 +3,7 @@ import { prodottoModel } from '../../models/prodottoModel';
 import { ActivatedRoute } from '@angular/router';
 import { ProdottiService } from '../../services/prodotti.service';
 import { CommonModule } from '@angular/common';
+import { CarrelloService } from '../../services/carrello.service';
 
 @Component({
   selector: 'app-card-grande',
@@ -14,11 +15,21 @@ import { CommonModule } from '@angular/common';
 export class CardGrandeComponent {
   prodotto: prodottoModel | undefined;
 
-  constructor(private route: ActivatedRoute, private prodottoService: ProdottiService) {
+  constructor(private route: ActivatedRoute, private prodottoService: ProdottiService, private serviceC: CarrelloService) {
     const id = +this.route.snapshot.params['id'];
     this.prodottoService.getProdotto(id).subscribe({
       next: (data: prodottoModel) => this.prodotto = data,
       error: (error) => console.log(error)
     });
   }
+
+
+  aggiungiAlCarrello(){
+    const id = +this.route.snapshot.params['id'];
+    this.prodottoService.getProdotto(id).subscribe({
+      next: (data: prodottoModel) => {this.prodotto = data; this.serviceC.aggiungiCarello(this.prodotto)},
+      error: (error) => console.log(error)
+    });
+    console.log("aggiungi al carrello fatto");
+   }
 }

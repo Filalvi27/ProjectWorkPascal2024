@@ -2,13 +2,14 @@
   <div class="card" style="width: 18rem;" *ngFor="let prodotto of prodotti">
     <div [routerLink]="['/card', prodotto.id]" style="cursor: pointer;">
       <div class="card-body">
-        <h5 class="card-title">{{prodotto.title}}</h5>
-        <p class="card-text">Stars: {{prodotto.stars}}</p>
-        <p class="card-text">Price: {{prodotto.price | currency}}</p>
-        <a href="#" class="btn btn-primary">Add to cart</a>
+        <div>
+          <h5 class="card-title">{{prodotto.title}}</h5>
+          <img src="{{setImage(prodotto)}}" class="img-fluid" alt="" style="width:100px;height:100px;">
+          <p class="card-text">Stars: {{prodotto.stars}}</p>
+          <p class="card-text">Price: {{prodotto.price | currency}}</p>
+          <div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!--        <img class="card-img-top" [src]="'https://storage.googleapis.com/projectworkpascal/' + prodotto.images.split(';')[0]" alt="Card image cap">
--->
