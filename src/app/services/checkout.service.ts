@@ -19,6 +19,10 @@ export class CheckoutService {
     this.ordiniPrecedenti.push(utente);
   }
 
+  getOrdini(): utenteCheckoutModel[] {
+    return this.ordiniPrecedenti;
+  }
+
   //post all api col carrello
   // getCarrello(): {
   //   //  return this.utente;

@@ -23,6 +23,4 @@ export class ImgService {
       // console.log(key);
     return key;
     }
-
-
 }

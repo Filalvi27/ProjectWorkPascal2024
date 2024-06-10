@@ -1,0 +1,76 @@
+<!-- <h1>navbar categorie</h1> -->
+<form action="/action_page.php">
+  <input type="checkbox" id="1" name="1" value="1">
+  <label for="1"> Abbigliamento</label><br>
+  <input type="checkbox" id="2" name="2" value="2">
+  <label for="2"> Elettronica</label><br>
+  <input type="checkbox" id="3" name="3" value="3">
+  <label for="3"> Mobili</label><br><br>
+  <input type="checkbox" id="4" name="4" value="4">
+  <label for="4"> Scarpe</label><br><br>
+  <input type="checkbox" id="5" name="5" value="5">
+  <label for="5"> Varie</label><br><br>
+  <input type="button" (click)="onSubmit()" value="Submit">
+</form>
+
+<!--{
+  "result": [
+    {
+      "id": 1,
+      "name": "Abbigliamento",
+      "image": "QkIa5tT.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Elettronica",
+      "image": "ZANVnHE.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Mobili",
+      "image": "Qphac99.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "Scarpe",
+      "image": "qNOjJje.jpeg"
+    },
+    {
+      "id": 5,
+      "name": "Varie",
+      "image": "BG8J0Fj.jpg"
+    }
+  ],
+  "totalRecordsCount": 5
+}-->
+
+
+<div>
+    <app-card-piccola [prodotti]="prodotti"></app-card-piccola>
+  </div>
+  
+  <div class="container">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" (click)="onPageSelect(currentPage - 1)" [class.disabled]="currentPage === 1" *ngIf="currentPage > 1">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+
+        <ng-container *ngFor="let i of totArray; index as j">
+          <li class="page-item" [class.active]="currentPage === j+1"><a class="page-link" (click)="onPageSelect(j+1)">{{j+1}}</a></li>
+       </ng-container>
+
+
+        <!-- <li class="page-item" [class.active]="currentPage === 1"><a class="page-link" (click)="onPageSelect(1)">1</a></li>
+        <li class="page-item" [class.active]="currentPage === 2"><a class="page-link" (click)="onPageSelect(2)">2</a></li>
+        <li class="page-item" [class.active]="currentPage === 3"><a class="page-link" (click)="onPageSelect(3)">3</a></li> -->
+        <li class="page-item" (click)="onPageSelect(currentPage + 1)"  [class.disabled]="currentPage === totArray.length" *ngIf="currentPage < totArray.length">
+          <a class="page-link" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>

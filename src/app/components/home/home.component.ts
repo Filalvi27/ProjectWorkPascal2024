@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent {
   prodotti: prodottoModel[] = [];
   currentPage: number = 1;
@@ -21,10 +22,14 @@ export class HomeComponent {
   }
 
   loadCards(page: number) {
-    this.prodottoService.getProdotti(page).subscribe({
-      next: prodotti => this.prodotti = prodotti,
-      error: error => console.error(error)
-    });
+    this.prodottoService.getProdotti(page).subscribe(
+      prodotti => {this.prodotti = prodotti;
+        console.log(this.currentPage);
+        console.log(this.prodotti);
+      },
+      error => console.error(error)
+    );
+    
   }
 
   onPageSelect(page: number) {

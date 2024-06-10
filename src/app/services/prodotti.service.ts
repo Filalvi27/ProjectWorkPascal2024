@@ -10,10 +10,11 @@ import { prodottoModel } from '../models/prodottoModel';
 })
 export class ProdottiService {
   private apiUrl = 'https://projectworkapi-z5nzzkwikq-oc.a.run.app/products';
+  private apiUrl2 = 'https://projectworkapi-z5nzzkwikq-oc.a.run.app';
   //private imageBaseUrl = 'https://storage.googleapis.com/projectworkpascal/';
 
   constructor(private http: HttpClient) {}
-
+  ricerca : string = "";
 
   getProdotti(n:number): Observable<prodottoModel[]> {
     return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?page=${n}&pagesize=10`)
@@ -25,9 +26,39 @@ export class ProdottiService {
       );
   }
 
-
   getProdotto(id: number): Observable<prodottoModel> {
-    console.log("getProdotto fatto");
     return this.http.get<prodottoModel>(`${this.apiUrl}/${id}`);
+  }
+ 
+  
+  getSearch(n: number): Observable<prodottoModel[]> {
+    return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?search=${this.ricerca}&page=${n}&pagesize=10`)
+      .pipe(
+        map(response => response.result) // Estrai l'array di prodotti dalla proprietà `result`
+      );
+  }
+  
+  
+
+
+  getCategory(id:number,n:number) {
+    return this.http.get<{result : prodottoModel[]}>(`${this.apiUrl2}/categories/${id}/products?page=${n}&pagesize=${10}`)
+    .pipe(
+      map(response => response.result.map(prodotto => {
+        return prodotto;
+      }))
+    );
+  }
+
+  getTotal(id:number,n:number) {
+    return this.http.get<{totalRecordsCount : number}>(`${this.apiUrl2}/categories/${id}/products?page=${n}&pagesize=${10}`)
+    .pipe(
+      map(response => response.totalRecordsCount)
+    );
+  }
+  
+  
+  setSearchValue(search: string) {
+    this.ricerca = search;
   }
 }

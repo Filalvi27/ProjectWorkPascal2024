@@ -7,7 +7,7 @@ import { prodottoModel } from '../models/prodottoModel';
 //memorizzo qua il carrello
 export class CarrelloService {
 
-  carrello: prodottoModel[] = [];
+  private carrello: prodottoModel[] = [];
   totale: number = 0;
   constructor() { }
 
@@ -18,23 +18,6 @@ export class CarrelloService {
   }
 
   aggiungiCarello(prodotto: prodottoModel) {
-    // let prodotto1 = {
-    //   id: 2,
-    //   title: 'T-Shirt Grafica Montagna Maestosa',
-    //   description: 'Eleva il tuo guardaroba con questa elegante t-shirt nera caratterizzata da una sorprendente grafica monocromatica di una catena montuosa. Perfetta per chi ama la natura o desidera aggiungere un tocco di design ispirato alla natura al proprio look, questa maglietta è realizzata in tessuto morbido e traspirante che garantisce comfort per tutto il giorno. Ideale per uscite casual o come regalo unico, questa t-shirt è un\'aggiunta versatile a qualsiasi collezione.',
-    //   price: 44,
-    //   stars: 4.5,
-    //   images: 'QkIa5tT.jpeg;jb5Yu0h.jpeg;UlxxXyG.jpeg',
-    //   idCategory: 1,
-    //   category: {
-    //     id: 1,
-    //     name: 'Abbigliamento',
-    //     image: 'QkIa5tT.jpeg'
-    //   },
-    //   quantity: 1,
-    //   addedToCart: false
-    // }
-
     console.log("carrello service");
 
     let pp = this.carrello.find(p => p.id == prodotto.id);

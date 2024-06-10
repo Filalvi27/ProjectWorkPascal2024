@@ -11,6 +11,8 @@ import { CarrelloService } from '../../services/carrello.service';
 import { FormControl, MinValidator } from '@angular/forms';
 import  {CheckoutService} from '../../services/checkout.service'
 
+import {ImgService} from '../../services/img.service'
+
 @Component({
     selector: 'app-form-anagrafici',
     standalone: true,
@@ -45,22 +47,11 @@ export class FormAnagraficiComponent {
     totale: number = 0;
 
 
-    constructor(private formBuilder: FormBuilder, private serviceC: CarrelloService, private serviceU : CheckoutService) {
-        // this.inputForm = this.formBuilder.group({
-        //     clientName: ['', Validators.required],
-        //     address: ['', Validators.required],
-        //     totalPrice: ['', Validators.required],
-        //     paymentNumber: ['', Validators.required],
-        //     paymentOwnerName: ['', Validators.required],
-        //     paymentExpire: ['', Validators.required],
-        //     paymentCvv: ['', Validators.required],
-        // });
-
-
+    constructor(private service:ImgService,private formBuilder: FormBuilder, private serviceC: CarrelloService, private serviceU : CheckoutService) {
 
         this.totale = this.serviceC.getTotale();
         this.prodotti = this.serviceC.getCarrello();
-
+        console.log(this.prodotti);
         this.prodottiPiccoli = this.prodotti.map(prod => ({ idproduct: prod.id, quantity: prod.quantity }));
 
         console.log(this.prodottiPiccoli);
@@ -105,6 +96,11 @@ export class FormAnagraficiComponent {
             this.inputForm.reset();
         }
     }
+
+    setImage(item: prodottoModel) {
+        return this.service.getImmagine(item)[0];
+      }
+    
 
 }
 

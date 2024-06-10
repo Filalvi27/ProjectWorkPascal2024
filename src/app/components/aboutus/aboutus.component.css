@@ -1,0 +1,29 @@
+.card {
+    float: left;
+    width: 17em;
+    height: 8em;
+    padding: 2em;
+    background: #171717;
+    transition: 1s ease-in-out;
+    /*clip-path: polygon(30px 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% 30px);*/
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+  }
+  
+  .card span {
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 1em;
+  }
+  
+  .card .share {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+  }
+   

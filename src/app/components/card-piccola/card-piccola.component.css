@@ -1,10 +1,56 @@
-.card{
+.card {
     float: left;
 }
-.clear{
+
+.clear {
     clear: both;
 }
 
-.card-deck{
+.card-deck {
     width: 100%;
 }
+
+.card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 3em;
+    line-height: 1.5em;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-title.hovered {
+    -webkit-line-clamp: unset;
+    overflow: auto;
+    max-height: 3em;
+    padding-right: 10px;
+    white-space: normal;
+}
+.star-rating {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 0;
+    font-size: 1.5rem;
+}
+
+.star {
+    color: #ddd;
+    position: relative;
+    display: inline-block;
+}
+
+.star.checked {
+    color: #ffcc00;
+}
+
+.star.half::before {
+    content: "\2605";
+    position: absolute;
+    color: #ffcc00;
+    width: 50%;
+    overflow: hidden;
+}
+

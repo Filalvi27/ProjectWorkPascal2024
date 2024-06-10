@@ -3,9 +3,18 @@
     <div [routerLink]="['/card', prodotto.id]" style="cursor: pointer;">
       <div class="card-body">
         <div>
-          <h5 class="card-title">{{prodotto.title}}</h5>
+          <h5 class="card-title" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+            {{prodotto.title}}
+          </h5>
           <img src="{{setImage(prodotto)}}" class="img-fluid" alt="" style="width:100px;height:100px;">
-          <p class="card-text">Stars: {{prodotto.stars}}</p>
+          <p class="card-text">
+            <span class="star-rating">
+              <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
+                <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
+              </ng-container>
+            </span>
+          </p>
+          
           <p class="card-text">Price: {{prodotto.price | currency}}</p>
           <div>
           </div>
@@ -13,3 +22,4 @@
       </div>
     </div>
   </div>
+</div>

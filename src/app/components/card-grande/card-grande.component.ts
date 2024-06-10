@@ -32,10 +32,25 @@ export class CardGrandeComponent {
       },
       error: (error) => console.log(error)
     });
+
     console.log("aggiungi al carrello fatto");
   }
 
   getImmagini(prodotto: prodottoModel): string[] {
     return prodotto.images.split(';').map(img => `https://storage.googleapis.com/projectworkpascal/${img}`);
+  }
+
+  getStars(rating: number): number[] {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      if (rating >= i) {
+        stars.push(1);
+      } else if (rating >= i - 0.5) {
+        stars.push(0.5);
+      } else {
+        stars.push(0);
+      }
+    }
+    return stars;
   }
 }
