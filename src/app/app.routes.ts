@@ -20,6 +20,6 @@ export const routes: Routes = [
      { path:'aboutus', component:AboutUsComponent},
      { path:'resoconto', component:ResocontoComponent},
      {path:'ricercaCategoria', component:RicercaCategoriaComponent},
-     { path:'ricerca', component:RicercaNomeComponent },
+     { path:'ricerca/:ricerca', component:RicercaNomeComponent },
      { path:'**', component:NotfoundComponent }
  ];

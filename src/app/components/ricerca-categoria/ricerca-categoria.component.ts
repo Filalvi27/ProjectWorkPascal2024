@@ -68,11 +68,13 @@ export class RicercaCategoriaComponent {
 
   }
 
-
-  onSubmit() {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    const values = Array.from(checkboxes).map(checkbox => checkbox.value);
-    console.log(values);
+  onSubmit(){
+      let search : string[] =[]
+    for (let i = 1; i < 6; i++) {
+      if((<HTMLInputElement>document.getElementById('i')).checked){
+        search.push((<HTMLInputElement>document.getElementById('i')).value);
+      }
+    }
+    console.log(search);
   }
-
 }

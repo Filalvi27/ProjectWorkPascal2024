@@ -33,7 +33,7 @@
         <h5 class="card-header">Riepilogo ordine</h5>
         <div class="card-body">
           <h5 class="card-title">Totale: {{calcolaTotale()}} €</h5>
-          <a [routerLink]="['/formAnagrafici']" class="btn btn-primary">Vai al pagamento</a>
+          <a [routerLink]="['/formAnagrafici']" class="btn btn-primary" [disabled]="calcolaTotale()==0">Vai al pagamento</a>
         </div>
       </div>
     </div>

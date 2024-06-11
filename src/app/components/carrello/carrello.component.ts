@@ -8,6 +8,7 @@ import {CarrelloService} from '../../services/carrello.service';
 
 import { RouterModule } from '@angular/router';
 
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-carrello',

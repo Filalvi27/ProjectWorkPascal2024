@@ -14,7 +14,7 @@ export class ProdottiService {
   //private imageBaseUrl = 'https://storage.googleapis.com/projectworkpascal/';
 
   constructor(private http: HttpClient) {}
-  ricerca : string = "";
+  ricerca : string | undefined;
 
   getProdotti(n:number): Observable<prodottoModel[]> {
     return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?page=${n}&pagesize=10`)
@@ -58,7 +58,7 @@ export class ProdottiService {
   }
   
   
-  setSearchValue(search: string) {
+  setSearchValue(search: string | undefined, idCa:number) {
     this.ricerca = search;
   }
 }

@@ -18,7 +18,7 @@
 <div class="collapse" id="navbarToggleExternalContent">
   <div class="scomparsa bg-dark p-4">
     <div class="input">
-      <button [routerLink]="['/']" class="value">
+      <button (click)="onHome()" [routerLink]="['/']" class="value">
         <svg data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
           <path
             d="m1.5 13v1a.5.5 0 0 0 .3379.4731 18.9718 18.9718 0 0 0 6.1621 1.0269 18.9629 18.9629 0 0 0 6.1621-1.0269.5.5 0 0 0 .3379-.4731v-1a6.5083 6.5083 0 0 0 -4.461-6.1676 3.5 3.5 0 1 0 -4.078 0 6.5083 6.5083 0 0 0 -4.461 6.1676zm4-9a2.5 2.5 0 1 1 2.5 2.5 2.5026 2.5026 0 0 1 -2.5-2.5zm2.5 3.5a5.5066 5.5066 0 0 1 5.5 5.5v.6392a18.08 18.08 0 0 1 -11 0v-.6392a5.5066 5.5066 0 0 1 5.5-5.5z"
@@ -74,10 +74,27 @@
     </button>
 
     <div class="search bg-dark">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+          >
+          {{selectedCategoryNome}}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <li><a class="dropdown-item" (click)="selectedCategory = 0" (click)="selectedCategoryNome='All'">All</a></li>
+          <li><a class="dropdown-item" (click)="selectedCategory = 1" (click)="selectedCategoryNome='Abbigliamento'">Abbigliamento</a></li>
+          <li><a class="dropdown-item" (click)="selectedCategory = 2" (click)="selectedCategoryNome='Elettronica'">Elettronica</a></li>
+          <li><a class="dropdown-item" (click)="selectedCategory = 3" (click)="selectedCategoryNome='Mobili'">Mobili</a></li>
+          <li><a class="dropdown-item" (click)="selectedCategory = 4" (click)="selectedCategoryNome='Scarpe'">Scarpe</a></li>
+          <li><a class="dropdown-item" (click)="selectedCategory = 5" (click)="selectedCategoryNome='Varie'">Varie</a></li>
+
+        </ul>
+      </div>
+
       <form #searchForm class="form">
-        <input class="searchbar" type="search" placeholder="Search">
+        <input class="searchbar" type="search" placeholder="Search" [(ngModel)]="searchText">
       </form>
-      <a (click)="onSubmit(searchForm)" class="bottone" [routerLink]="['/ricerca']">Cerca</a>
+      <a (click)="onSubmit(searchText)" class="bottone" [routerLink]="['/ricerca', searchText]">Cerca</a>
+      
     </div>
   </div>
 </nav>

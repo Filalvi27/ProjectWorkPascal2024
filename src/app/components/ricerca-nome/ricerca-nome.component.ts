@@ -28,6 +28,7 @@ export class RicercaNomeComponent implements OnInit  {
       },
       error => console.error(error)
     );
+    this.ngOnInit();
   }
 
 
