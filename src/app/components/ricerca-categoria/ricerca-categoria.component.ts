@@ -70,11 +70,14 @@ export class RicercaCategoriaComponent {
 
   onSubmit(){
       let search : number = 0;
+      let element : HTMLInputElement 
     for (let i = 1; i < 6; i++) {
-      if((<HTMLInputElement>document.getElementById(`${i}`)).checked){
-        search = Number((<HTMLInputElement>document.getElementById(`${i}`)).value);
+      element = (<HTMLInputElement>document.getElementById(`categoria${i}`));
+      if(element.checked){
+        search = Number(element.value);
       }
     }
-    console.log(search);
+    console.log(search);4
+    this.loadCards(search, 1);
   }
 }

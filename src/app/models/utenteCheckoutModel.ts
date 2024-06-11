@@ -2,6 +2,7 @@ export interface utenteCheckoutModel {
     clientName: string;
     address: string;
     totalPrice: number;
+    email:  string;
     payment: {
         number: string;
         ownerName: string;

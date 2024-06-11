@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { prodottoModel } from '../models/prodottoModel';
+import { utenteCheckoutModel } from '../models/utenteCheckoutModel';
 
 
 @Injectable({
@@ -42,7 +43,7 @@ export class ProdottiService {
 
 
   getCategory(id:number,n:number) {
-    return this.http.get<{result : prodottoModel[]}>(`${this.apiUrl2}/categories/${id}/products?page=${n}&pagesize=${10}`)
+    return this.http.get<{result : prodottoModel[]}>(`${this.apiUrl2}/categories/${id}/products?page=${n}&pagesize=${99}`)
     .pipe(
       map(response => response.result.map(prodotto => {
         return prodotto;
@@ -61,4 +62,9 @@ export class ProdottiService {
   setSearchValue(search: string | undefined, idCa:number) {
     this.ricerca = search;
   }
+
+  metodoPost(ordine: utenteCheckoutModel){
+    return this.http.post(this.apiUrl2+'/orders', ordine).subscribe();
+  }
+
 }

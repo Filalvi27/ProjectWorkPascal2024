@@ -6,6 +6,11 @@
 
     <div *ngIf="showfirst">
         <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" formControlName="email" required>
+        </div>
+
+        <div>
             <label for="clientName">Client Name:</label>
             <input type="text" id="clientName" formControlName="clientName" required>
         </div>
@@ -16,7 +21,7 @@
         </div>
 
 
-        <button type="submit" [disabled]="!inputForm.get('clientName')?.valid || !inputForm.get('address')?.valid"
+        <button type="submit" [disabled]="!inputForm.get('clientName')?.valid || !inputForm.get('address')?.valid || !inputForm.get('email')?.valid"
             (click)="showfirst = false ">Submit</button>
     </div>
 
