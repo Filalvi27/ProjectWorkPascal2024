@@ -2,12 +2,13 @@
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 2%;
-    width: 50%;
+    width: 90%; /* Ho aumentato la larghezza al 90% per adattarsi meglio al layout */
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .star-rating {
     display: flex;
     justify-content: center;
