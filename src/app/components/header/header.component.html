@@ -89,12 +89,8 @@
 
         </ul>
       </div>
+      <app-ricerca-nome></app-ricerca-nome>
 
-      <form #searchForm class="form">
-        <input class="searchbar" type="search" placeholder="Search" >
-      </form>
-      <a (click)="onSubmit(searchForm)" class="bottone" [routerLink]="['/ricerca', searchForm]">Cerca</a>
-      
     </div>
   </div>
 </nav>

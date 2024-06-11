@@ -78,4 +78,3 @@ export class RicercaCategoriaComponent {
     console.log(search);
   }
 }
-
