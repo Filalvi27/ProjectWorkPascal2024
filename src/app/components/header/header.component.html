@@ -45,21 +45,12 @@
           {{selectedCategoryNome}}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li><a class="dropdown-item" (click)="selectedCategory = 0" (click)="selectedCategoryNome='All'">All</a></li>
-          <li><a class="dropdown-item" (click)="selectedCategory = 1" (click)="selectedCategoryNome='Abbigliamento'">Abbigliamento</a></li>
-          <li><a class="dropdown-item" (click)="selectedCategory = 2" (click)="selectedCategoryNome='Elettronica'">Elettronica</a></li>
-          <li><a class="dropdown-item" (click)="selectedCategory = 3" (click)="selectedCategoryNome='Mobili'">Mobili</a></li>
-          <li><a class="dropdown-item" (click)="selectedCategory = 4" (click)="selectedCategoryNome='Scarpe'">Scarpe</a></li>
-          <li><a class="dropdown-item" (click)="selectedCategory = 5" (click)="selectedCategoryNome='Varie'">Varie</a></li>
-
+          <li><a class="dropdown-item" (click)="selectedCategory = 0" (click)="selectedCategoryNome='All'" [routerLink]="['/']">All</a></li>
+          <li><a class="dropdown-item" (click)="selectedCategory = 1" (click)="selectedCategoryNome='Category'" [routerLink]="['/ricercaCategoria']">Category</a></li>
         </ul>
       </div>
+      <app-ricerca-nome></app-ricerca-nome>
 
-      <form #searchForm class="form">
-        <input class="searchbar" type="search" placeholder="Search" >
-      </form>
-      <a (click)="onSubmit(searchForm)" class="bottone" [routerLink]="['/ricerca', searchForm]">Cerca</a>
-      
     </div>
   </div>
 </nav> -->

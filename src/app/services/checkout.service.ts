@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { prodottoModel } from '../models/prodottoModel';
 import { utenteCheckoutModel } from '../models/utenteCheckoutModel';
 import { prodottoPiccoloModel } from '../models/utenteCheckoutModel';
-
 import { CarrelloService } from './carrello.service';
 
 @Injectable({
@@ -27,6 +26,5 @@ export class CheckoutService {
   // getCarrello(): {
   //   //  return this.utente;
   // }
-
 
 }
