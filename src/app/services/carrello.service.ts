@@ -62,6 +62,7 @@ export class CarrelloService {
   }
 
   getTotale():number {
+    console.log(this.totale);
     return this.totale;
   }
 

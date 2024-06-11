@@ -11,9 +11,21 @@
 .form-check{
     display: flex;
     float: left;
-    padding: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 .btn_form{
-    padding-left: 10px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+.clear{
+    clear: both;
+}
+
+.formCategory{
+    margin: 10px;
+    padding-bottom: 10px;
 }

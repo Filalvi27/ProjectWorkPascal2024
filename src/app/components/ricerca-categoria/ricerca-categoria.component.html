@@ -1,29 +1,30 @@
 <!-- <h1>navbar categorie</h1> -->
-<form>
-  <div class="form-check">
-    <input type="radio" id="1" name="1" value="1" checked="falseh">
-    <label for="1"> Abbigliamento</label>
+<form class="formCategory">
+  <div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="categoria" id="categoria1" value="1" (change)="onSubmit()">
+      <label class="form-check-label" for="categoria1">Abbigliamento</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="categoria" id="categoria2" value="2" (change)="onSubmit()">
+      <label class="form-check-label" for="categoria2">Elettronica</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="categoria" id="categoria3" value="3" (change)="onSubmit()">
+      <label class="form-check-label" for="categoria3">Mobili</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="categoria" id="categoria4" value="4" (change)="onSubmit()">
+      <label class="form-check-label" for="categoria4">Scarpe</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="categoria" id="categoria5" value="5" (change)="onSubmit()">
+      <label class="form-check-label" for="categoria5">Varie</label>
+    </div>
   </div>
-  <div class="form-check">
-    <input type="radio" id="2" name="2" value="2">
-    <label for="2"> Elettronica</label>
-  </div>
-  <div class="form-check">
-    <input type="radio" id="3" name="3" value="3">
-    <label for="3"> Mobili</label>
-  </div>
-  <div class="form-check">
-    <input type="radio" id="4" name="4" value="4">
-    <label for="4"> Scarpe</label>
-  </div>
-  <div class="form-check">
-    <input type="radio" id="5" name="5" value="5">
-    <label for="5"> Varie</label>
-  </div>
-  <input class="btn_form" type="button" (click)=" onSubmit()" value="Cerca">
 </form>
-
-<br>
+<div class="clear"></div>
+<br>  
 
 <!--{
   "result": [
@@ -60,7 +61,7 @@
 <div>
   <app-card-piccola [prodotti]="prodotti"></app-card-piccola>
 </div>
-
+<!--
 <div class="container">
   <nav aria-label="Page navigation example">
     <ul class="pagination">
@@ -77,9 +78,9 @@
       </ng-container>
 
 
-      <!-- <li class="page-item" [class.active]="currentPage === 1"><a class="page-link" (click)="onPageSelect(1)">1</a></li>
+      <li class="page-item" [class.active]="currentPage === 1"><a class="page-link" (click)="onPageSelect(1)">1</a></li>
         <li class="page-item" [class.active]="currentPage === 2"><a class="page-link" (click)="onPageSelect(2)">2</a></li>
-        <li class="page-item" [class.active]="currentPage === 3"><a class="page-link" (click)="onPageSelect(3)">3</a></li> -->
+        <li class="page-item" [class.active]="currentPage === 3"><a class="page-link" (click)="onPageSelect(3)">3</a></li> 
       <li class="page-item" (click)="onPageSelect(currentPage + 1)" [class.disabled]="currentPage === totArray.length"
         *ngIf="currentPage < totArray.length">
         <a class="page-link" aria-label="Next">
@@ -88,4 +89,4 @@
       </li>
     </ul>
   </nav>
-</div>
+</div>-->

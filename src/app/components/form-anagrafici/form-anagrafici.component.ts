@@ -10,8 +10,10 @@ import { NgModel } from '@angular/forms';
 import { CarrelloService } from '../../services/carrello.service';
 import { FormControl, MinValidator } from '@angular/forms';
 import  {CheckoutService} from '../../services/checkout.service'
+import { HttpClient } from '@angular/common/http';
 
 import {ImgService} from '../../services/img.service'
+import { ProdottiService } from '../../services/prodotti.service';
 
 @Component({
     selector: 'app-form-anagrafici',
@@ -27,6 +29,7 @@ export class FormAnagraficiComponent {
         clientName: new FormControl('', Validators.required),
         address: new FormControl('', Validators.required),
         totalPrice: new FormControl(0, Validators.required),
+        email: new FormControl('', Validators.required),
         paymentNumber: new FormControl('', Validators.required),
         paymentOwnerName: new FormControl('', Validators.required),
         paymentExpire: new FormControl('', Validators.required),
@@ -47,7 +50,7 @@ export class FormAnagraficiComponent {
     totale: number = 0;
 
 
-    constructor(private service:ImgService,private formBuilder: FormBuilder, private serviceC: CarrelloService, private serviceU : CheckoutService) {
+    constructor(private http: HttpClient ,private service:ImgService,private formBuilder: FormBuilder, private serviceC: CarrelloService, private serviceU : CheckoutService, private serviceP : ProdottiService) {
 
         this.totale = this.serviceC.getTotale();
         this.prodotti = this.serviceC.getCarrello();
@@ -70,7 +73,8 @@ export class FormAnagraficiComponent {
             var formData: utenteCheckoutModel = {
                 clientName: this.inputForm.get('clientName')?.value,
                 address: this.inputForm.get('address')?.value,
-                totalPrice: this.inputForm.get('totalPrice')?.value,
+                totalPrice: this.totale,
+                email: this.inputForm.get('email')?.value,
                 payment: {
                     number: this.inputForm.get('paymentNumber')?.value,
                     ownerName: this.inputForm.get('paymentOwnerName')?.value,
@@ -94,12 +98,13 @@ export class FormAnagraficiComponent {
 
             // Resetta il form
             this.inputForm.reset();
+            this.serviceP.metodoPost(formData);
         }
     }
 
     setImage(item: prodottoModel) {
         return this.service.getImmagine(item)[0];
-      }
+    }
     
 
 }
