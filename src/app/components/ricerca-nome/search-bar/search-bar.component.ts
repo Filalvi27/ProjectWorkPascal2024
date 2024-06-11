@@ -5,7 +5,7 @@ import { RicercaNomeComponent } from '../ricerca-nome.component';
 @Component({
   selector: 'app-search-bar',
   standalone: true,
-  imports: [RouterModule,RicercaNomeComponent],
+  imports: [RouterModule],
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.css'
 })

@@ -5,6 +5,9 @@ import { CardPiccolaComponent } from '../card-piccola/card-piccola.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ActivatedRoute } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-ricerca-nome',
@@ -20,9 +23,11 @@ export class RicercaNomeComponent implements OnInit  {
   selectedCategory: number = 0;
   selectedCategoryNome: string = "All";
 
-  constructor(private prodottiService: ProdottiService) {
+  constructor(private prodottiService: ProdottiService,private route: ActivatedRoute) {
 
    }
+
+   can:boolean = this.prodottiService.getCan();
    
    onSubmit(form: HTMLFormElement) {
     const searchInput = form.querySelector('input[type="search"]');
@@ -33,6 +38,7 @@ export class RicercaNomeComponent implements OnInit  {
     console.log(this.selectedCategoryNome);
     console.log("Cerca da header: " + this.searchText);
     this.prodottiService.setSearchValue(this.searchText, this.selectedCategory);
+    this.prodottiService.setCan(true);
     this.ngOnInit();
   }
   

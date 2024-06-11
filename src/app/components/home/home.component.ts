@@ -4,11 +4,12 @@ import { ProdottiService } from '../../services/prodotti.service';
 import { prodottoModel } from '../../models/prodottoModel';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardPiccolaComponent, RouterModule, CommonModule],
+  imports: [CardPiccolaComponent, RouterModule, CommonModule, RicercaNomeComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

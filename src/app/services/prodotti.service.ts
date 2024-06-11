@@ -16,6 +16,7 @@ export class ProdottiService {
 
   constructor(private http: HttpClient) {}
   ricerca : string | undefined;
+  can:boolean = true;
 
   getProdotti(n:number): Observable<prodottoModel[]> {
     return this.http.get<{ result: prodottoModel[] }>(`${this.apiUrl}?page=${n}&pagesize=10`)
@@ -67,4 +68,11 @@ export class ProdottiService {
     return this.http.post(this.apiUrl2+'/orders', ordine).subscribe();
   }
 
+  getCan(){
+    return this.can;
+  }
+
+  setCan(can:boolean){
+    this.can = can;
+  }
 }

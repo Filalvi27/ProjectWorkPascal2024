@@ -1,6 +1,8 @@
 
 <app-search-bar></app-search-bar>
   
-<div>
-    <app-card-piccola [prodotti]="prodotti"></app-card-piccola>
-</div>
+<ng-container> 
+    <div *ngIf="can">
+        <app-card-piccola [prodotti]="prodotti"></app-card-piccola>
+    </div>
+</ng-container>

@@ -10,10 +10,12 @@ import { RouterModule } from '@angular/router';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
+
 @Component({
   selector: 'app-carrello',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,RicercaNomeComponent],
   templateUrl: './carrello.component.html',
   styleUrl: './carrello.component.css'
 })
