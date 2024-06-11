@@ -1,8 +1,5 @@
-<div *ngIf="prodotto">
-    <hr>
-    <div class="text-center">
-        <h1><strong> {{ prodotto.title }}</strong></h1>
-
+<div *ngIf="prodotto" class="containers">
+    <div style="flex: 1;">
         <!-- Carousel -->
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="max-width: 500px; margin: 0 auto;">
             <div class="carousel-inner">
@@ -20,20 +17,25 @@
             </button>
         </div>
         <!-- End of Carousel -->
-        <p><strong>Description:</strong> {{ prodotto.description }}</p>
-        <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
-        <span class="star-rating">
-            <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
-              <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
-            </ng-container>
-        </span>
-        <p><strong>Categoria:</strong>{{ prodotto.category.name }}</p>
     </div>
-    <a class="btn btn-primary" (click)="aggiungiAlCarrello()" *ngIf="!prodotto.addedToCart">Add to cart</a>
-    <div class="text-success" *ngIf="prodotto.addedToCart">
-        <i class="fa fa-check"></i>
-    </div>
-    <div class="text-danger" *ngIf="prodotto.addedToCart === false">
-        <i class="fa fa-times"></i>
+    <div style="flex: 1; padding-left: 20px;">
+        <div class="text-center">
+            <h1><strong>{{ prodotto.title }}</strong></h1>
+            <p><strong>Categoria:</strong> {{ prodotto.category.name }}</p>
+            <p><strong>Description:</strong> {{ prodotto.description }}</p>
+            <span class="star-rating">
+                <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
+                  <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
+                </ng-container>
+            </span>
+            <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
+            <a class="btn btn-primary" (click)="aggiungiAlCarrello()" *ngIf="!prodotto.addedToCart">Add to cart</a>
+            <div class="text-success" *ngIf="prodotto.addedToCart">
+                <i class="fa fa-check"></i>
+            </div>
+            <div class="text-danger" *ngIf="prodotto.addedToCart === false">
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
     </div>
 </div>

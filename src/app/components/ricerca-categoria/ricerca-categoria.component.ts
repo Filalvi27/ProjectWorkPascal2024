@@ -81,4 +81,3 @@ export class RicercaCategoriaComponent {
     this.loadCards(search, 1);
   }
 }
-
