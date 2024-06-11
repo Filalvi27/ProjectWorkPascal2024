@@ -27,7 +27,6 @@ export class HeaderComponent {
     //this.prodottiService.setSearchValue(this.searchText);
     console.log(this.selectedCategoryNome);
     console.log("Cerca da header: " + this.searchText);
-    this.url = this.searchInput;
     this.prodottiService.setSearchValue(this.searchText, this.selectedCategory);
   }
 

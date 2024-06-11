@@ -6,3 +6,14 @@
     padding-top: 30px;
     padding-bottom: 80px;
 }
+
+
+.form-check{
+    display: flex;
+    float: left;
+    padding: 10px;
+}
+
+.btn_form{
+    padding-left: 10px;
+}

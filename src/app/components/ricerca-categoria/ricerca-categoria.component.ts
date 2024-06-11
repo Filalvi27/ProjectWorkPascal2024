@@ -69,12 +69,13 @@ export class RicercaCategoriaComponent {
   }
 
   onSubmit(){
-      let search : string[] =[]
+      let search : number = 0;
     for (let i = 1; i < 6; i++) {
-      if((<HTMLInputElement>document.getElementById('i')).checked){
-        search.push((<HTMLInputElement>document.getElementById('i')).value);
+      if((<HTMLInputElement>document.getElementById(`${i}`)).checked){
+        search = Number((<HTMLInputElement>document.getElementById(`${i}`)).value);
       }
     }
     console.log(search);
   }
 }
+

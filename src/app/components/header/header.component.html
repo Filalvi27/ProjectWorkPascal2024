@@ -91,9 +91,9 @@
       </div>
 
       <form #searchForm class="form">
-        <input class="searchbar" type="search" placeholder="Search" [(ngModel)]="searchText">
+        <input class="searchbar" type="search" placeholder="Search" >
       </form>
-      <a (click)="onSubmit(searchText)" class="bottone" [routerLink]="['/ricerca', searchText]">Cerca</a>
+      <a (click)="onSubmit(searchForm)" class="bottone" [routerLink]="['/ricerca', searchForm]">Cerca</a>
       
     </div>
   </div>
