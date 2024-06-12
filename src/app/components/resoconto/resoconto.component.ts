@@ -18,9 +18,12 @@ import { CommonModule } from '@angular/common';
 })
 export class ResocontoComponent {
   itemscazzo : number[] = [1, 2, 3, 4, 5];
-  constructor(private CheckoutService: CheckoutService, private imgService: ImgService, private prodottiService: ProdottiService) {}
+  // ordini: utenteCheckoutModel[] = this.CheckoutService.getOrdini();
+  ordini: utenteCheckoutModel[] = this.CheckoutService.getOrdini() || [];
 
-  ordini: utenteCheckoutModel[] = this.CheckoutService.getOrdini();
+  constructor(private CheckoutService: CheckoutService, private imgService: ImgService, private prodottiService: ProdottiService) {
+    console.log(this.ordini);
+  }
 
   get orderTotal(): number {
     return 2;

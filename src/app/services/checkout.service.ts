@@ -31,6 +31,9 @@ export class CheckoutService {
 
 
   metodoPost(ordine: utenteCheckoutModel){
+    this.ordiniPrecedenti.push(ordine);
+    console.log("NIGA"+this.ordiniPrecedenti);
+    console.log("post fatto");
     return this.http.post(this.ProdottiService.getApiUrl()+'/orders', ordine).subscribe();
   }
 

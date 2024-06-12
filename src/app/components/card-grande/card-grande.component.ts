@@ -9,12 +9,13 @@ import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
 @Component({
   selector: 'app-card-grande',
   standalone: true,
-  imports: [CommonModule,RicercaNomeComponent],
+  imports: [CommonModule, RicercaNomeComponent],
   templateUrl: './card-grande.component.html',
   styleUrls: ['./card-grande.component.css']
 })
 export class CardGrandeComponent {
   prodotto: prodottoModel | undefined;
+  tagliaSelezionata: string | undefined;
 
   constructor(private route: ActivatedRoute, private prodottoService: ProdottiService, private serviceC: CarrelloService) {
     const id = +this.route.snapshot.params['id'];
@@ -26,16 +27,15 @@ export class CardGrandeComponent {
   }
 
   aggiungiAlCarrello() {
-    const id = +this.route.snapshot.params['id'];
-    this.prodottoService.getProdotto(id).subscribe({
-      next: (data: prodottoModel) => {
-        this.prodotto = data;
-        this.serviceC.aggiungiCarello(this.prodotto)
-      },
-      error: (error) => console.log(error)
-    });
-
+    if (this.prodotto) {
+      this.prodotto.taglia = this.tagliaSelezionata || '';
+      this.serviceC.aggiungiCarello(this.prodotto);
+    }
     console.log("aggiungi al carrello fatto");
+  }
+
+  selezionaTaglia(taglia: string) {
+    this.tagliaSelezionata = taglia;
   }
 
   getImmagini(prodotto: prodottoModel): string[] {

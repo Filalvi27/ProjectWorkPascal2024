@@ -1,5 +1,3 @@
-<app-ricerca-nome></app-ricerca-nome>
-
 <div *ngIf="prodotto" class="containers">
     <div style="flex: 1;">
         <!-- Carousel -->
@@ -30,6 +28,32 @@
                   <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
                 </ng-container>
             </span>
+            
+            <!-- Bottoni taglia per prodotti con idCategory == 1 -->
+            <div *ngIf="prodotto.idCategory === 1" class="mb-3">
+                
+                <!-- Bottoni visibili su schermi grandi -->
+                <div class="btn-group d-none d-md-inline-flex" role="group">
+                    <button type="button" class="btn" [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'S', 'btn-primary': tagliaSelezionata === 'S'}" (click)="selezionaTaglia('S')">S</button>
+                    <button type="button" class="btn" [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'M', 'btn-primary': tagliaSelezionata === 'M'}" (click)="selezionaTaglia('M')">M</button>
+                    <button type="button" class="btn" [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'L', 'btn-primary': tagliaSelezionata === 'L'}" (click)="selezionaTaglia('L')">L</button>
+                    <button type="button" class="btn" [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'XL', 'btn-primary': tagliaSelezionata === 'XL'}" (click)="selezionaTaglia('XL')">XL</button>
+                </div>
+                <!-- Menu a tendina visibile su schermi piccoli -->
+                <div class="dropdown d-md-none">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownTaglie" data-bs-toggle="dropdown" aria-expanded="false">
+                        Seleziona taglia <span *ngIf="tagliaSelezionata">({{ tagliaSelezionata }})</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownTaglie">
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('S')">S</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('M')">M</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('L')">L</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('XL')">XL</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Fine bottoni taglia -->
+            
             <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
             <a class="btn btn-primary" (click)="aggiungiAlCarrello()" *ngIf="!prodotto.addedToCart">Add to cart</a>
             <div class="text-success" *ngIf="prodotto.addedToCart">

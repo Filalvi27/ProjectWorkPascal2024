@@ -1,4 +1,4 @@
-<form [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="inputForm">
     <div>
         <label for="totalPrice">Prezzo Totale {{totale | currency}}:</label>
     </div>
@@ -44,7 +44,7 @@
         </div>
 
 
-        <a [routerLink]="['/resoconto']" class="btn btn-primary" >Vai al pagamento</a><!--[disabled]="calcolaTotale()==0"-->
+        <a (click)="onSubmit()" [routerLink]="['/resoconto']" class="btn btn-primary" >Vai al pagamento</a><!--[disabled]="calcolaTotale()==0"-->
 
         <button type="button" (click)="showfirst = true">Indietro</button>
         <!-- <button type="button" (click)="showFirstThree = true">First Three</button> -->

@@ -89,6 +89,9 @@ export class FormAnagraficiComponent {
 
             formData.details = this.prodottiPiccoli;
 
+            this.serviceU.metodoPost(formData);
+            console.log("post mandato")
+
             this.submittedForms.push(formData);
 
             console.log("Form values:");
@@ -99,7 +102,6 @@ export class FormAnagraficiComponent {
 
             // Resetta il form
             this.inputForm.reset();
-            this.serviceU.metodoPost(formData);
         }
     }
 
