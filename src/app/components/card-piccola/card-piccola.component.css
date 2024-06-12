@@ -16,10 +16,11 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    height: 4em;
+    height: 3em;
     line-height: 1.5em;
     position: relative;
     transition: all 0.3s ease-in-out;
+    margin-bottom: 1.5em;
   }
   
   .card-title.hovered {

@@ -13,5 +13,5 @@ export interface prodottoModel{
     },
     quantity: number,
     addedToCart: boolean,
-    taglia: string
+    taglia: string | number
 }

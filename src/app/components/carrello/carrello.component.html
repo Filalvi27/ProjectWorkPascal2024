@@ -16,13 +16,22 @@
         <tbody>
           <tr *ngFor="let item of carrello">
             <!-- <td><img src="{{item.images}}" class="img-fluid" alt=""></td> -->
-            <td><img src="{{setImage(item)}}" class="img-fluid" alt="" style="width:100px;height:100px;"></td>
-            <td>{{item.title}}</td>
+            <td><img src="{{setImage(item)}}" class="img-fluid" alt="" style="width:100px;height:100px;" [routerLink]="['/card', item.id]"></td>
+            <td>{{item.title}} Taglia: {{item.taglia}}</td>
             <td>{{item.price}} €</td>
             <td>
-              <button class="btn btn-secondary btn-sm" (click)="incrementa(item)">+</button>
-              {{item.quantity}}
-              <button class="btn btn-secondary btn-sm" (click)="decrementa(item)">-</button>
+              <div>
+                <button class="btn btn-secondary btn-sm" (click)="incrementa(item)">+</button>
+                {{item.quantity}}
+                <button class="btn btn-secondary btn-sm" (click)="decrementa(item)">-</button>
+  
+
+              </div>
+
+              <div>
+                <button class="btn btn-secondary btn-sm" (click)="elimina(item)">Elimina</button>
+
+              </div>
             </td>
             <td>{{item.price * item.quantity}} €</td>
             <!-- <td>{{item.price}} €</td> -->

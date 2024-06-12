@@ -60,6 +60,11 @@ export class CarrelloComponent {
     return this.service.getImmagine(item)[0];
   }
 
+  elimina(item: prodottoModel){
+    this.serviceC.eliminaCarrello(item);
+    this.carrello = this.serviceC.getCarrello();  
+  }
+
 
 }
 
