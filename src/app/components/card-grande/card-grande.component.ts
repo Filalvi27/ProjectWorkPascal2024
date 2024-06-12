@@ -1,41 +1,65 @@
 import { Component, Input } from '@angular/core';
 import { prodottoModel } from '../../models/prodottoModel';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProdottiService } from '../../services/prodotti.service';
 import { CommonModule } from '@angular/common';
 import { CarrelloService } from '../../services/carrello.service';
 import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms'; 
 @Component({
   selector: 'app-card-grande',
   standalone: true,
-  imports: [CommonModule, RicercaNomeComponent],
+  imports: [CommonModule, RicercaNomeComponent, RouterModule,FormsModule,ReactiveFormsModule],
   templateUrl: './card-grande.component.html',
   styleUrls: ['./card-grande.component.css']
 })
 export class CardGrandeComponent {
   prodotto: prodottoModel | undefined;
-  tagliaSelezionata: string | undefined;
+  tagliaSelezionata: string | number = 'S'; // Default to "S" for clothing
+  quantitaSelezionata: number = 1;
+  itemInCart: boolean = false;
 
-  constructor(private route: ActivatedRoute, private prodottoService: ProdottiService, private serviceC: CarrelloService) {
+  constructor(
+    private route: ActivatedRoute, 
+    private prodottoService: ProdottiService, 
+    private serviceC: CarrelloService
+  ) {
     const id = +this.route.snapshot.params['id'];
     prodottoService.setCan(false);
     this.prodottoService.getProdotto(id).subscribe({
-      next: (data: prodottoModel) => this.prodotto = data,
+      next: (data: prodottoModel) => {
+        this.prodotto = data;
+        if (this.prodotto.idCategory === 4) {
+          this.tagliaSelezionata = 38; // Default shoe size
+        }
+        this.checkItemInCart();
+      },
       error: (error) => console.log(error)
     });
   }
 
-  aggiungiAlCarrello() {
-    if (this.prodotto) {
-      this.prodotto.taglia = this.tagliaSelezionata || '';
-      this.serviceC.aggiungiCarello(this.prodotto);
-    }
-    console.log("aggiungi al carrello fatto");
+  selezionaTaglia(taglia: string | number) {
+    this.tagliaSelezionata = taglia;
+    this.checkItemInCart();
   }
 
-  selezionaTaglia(taglia: string) {
-    this.tagliaSelezionata = taglia;
+  checkItemInCart() {
+    if (this.prodotto) {
+      this.itemInCart = this.serviceC.isItemInCart(this.prodotto.id, this.tagliaSelezionata.toString());
+    }
+  }
+
+  aggiungiAlCarrello() {
+    if (this.prodotto) {
+      this.prodotto.taglia = this.tagliaSelezionata.toString();
+      this.prodotto.quantity = this.quantitaSelezionata;
+      console.log(this.quantitaSelezionata);
+      this.serviceC.aggiungiCarello(this.prodotto);
+      this.checkItemInCart(); // Recheck after adding/updating
+    }
+
+    console.log("aggiungi al carrello/modifica carrello fatto");
   }
 
   getImmagini(prodotto: prodottoModel): string[] {
