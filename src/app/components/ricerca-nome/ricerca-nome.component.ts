@@ -30,6 +30,10 @@ export class RicercaNomeComponent implements OnInit  {
    can:boolean = this.prodottiService.getCan();
    
    onSubmit(form: HTMLFormElement) {
+    /*onSubmit(form, event?: Event) {
+      if (event) {
+        event.preventDefault();  // Previene l'aggiornamento della pagina
+      }*/
     const searchInput = form.querySelector('input[type="search"]');
     this.searchText = (searchInput as HTMLInputElement).value;
     // Cancello il contenuto dell'input

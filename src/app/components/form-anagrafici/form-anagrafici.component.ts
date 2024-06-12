@@ -14,11 +14,12 @@ import { HttpClient } from '@angular/common/http';
 
 import {ImgService} from '../../services/img.service'
 import { ProdottiService } from '../../services/prodotti.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-form-anagrafici',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [CommonModule, ReactiveFormsModule, RouterModule],
     templateUrl: './form-anagrafici.component.html',
     styleUrls: ['./form-anagrafici.component.css']
 })
@@ -98,7 +99,7 @@ export class FormAnagraficiComponent {
 
             // Resetta il form
             this.inputForm.reset();
-            this.serviceP.metodoPost(formData);
+            this.serviceU.metodoPost(formData);
         }
     }
 

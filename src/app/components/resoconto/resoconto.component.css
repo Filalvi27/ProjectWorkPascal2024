@@ -1,0 +1,17 @@
+/* order-summary.component.css */
+.container {
+    max-width: 800px;
+  }
+  
+  .card {
+    border-radius: 10px;
+  }
+  
+  .card-header, .card-footer {
+    background-color: #f8f9fa;
+  }
+  
+  .table {
+    margin-bottom: 0;
+  }
+  

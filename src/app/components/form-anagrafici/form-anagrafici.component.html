@@ -28,7 +28,7 @@
     <div *ngIf="!showfirst">
         <div>
             <label for="paymentNumber">Payment Number:</label>
-            <input type="text" id="paymentNumber" formControlName="paymentNumber" required>
+            <input type="text" id="paymentNumber" formControlName="paymentNumber" placeholder="1234567890123456" required>
         </div>
         <div>
             <label for="paymentOwnerName">Owner Name:</label>
@@ -36,15 +36,16 @@
         </div>
         <div>
             <label for="paymentExpire">Expire:</label>
-            <input type="text" id="paymentExpire" formControlName="paymentExpire" required>
+            <input type="text" id="paymentExpire" formControlName="paymentExpire" placeholder="MMYY" required>
         </div>
-        <div>
-            <label for="paymentCvv">CVV:</label>
-            <input type="number" id="paymentCvv" formControlName="paymentCvv" required>
+        <div> 
+            <label for="paymentCvv">CVV/CVC:</label>
+            <input type="number" id="paymentCvv" formControlName="paymentCvv" placeholder="123 or 1234" required>
         </div>
 
 
-        <button type="submit" [disabled]="!canSubmit">Submit</button>
+        <a [routerLink]="['/resoconto']" class="btn btn-primary" >Vai al pagamento</a><!--[disabled]="calcolaTotale()==0"-->
+
         <button type="button" (click)="showfirst = true">Indietro</button>
         <!-- <button type="button" (click)="showFirstThree = true">First Three</button> -->
     </div>

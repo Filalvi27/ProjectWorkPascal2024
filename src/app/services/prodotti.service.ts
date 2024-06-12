@@ -64,10 +64,9 @@ export class ProdottiService {
     this.ricerca = search;
   }
 
-  metodoPost(ordine: utenteCheckoutModel){
-    return this.http.post(this.apiUrl2+'/orders', ordine).subscribe();
+  getApiUrl(): string {
+   return this.apiUrl2; 
   }
-
   getCan(){
     return this.can;
   }

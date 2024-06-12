@@ -17,43 +17,20 @@ import { CommonModule } from '@angular/common';
   styleUrl: './resoconto.component.css'
 })
 export class ResocontoComponent {
+  itemscazzo : number[] = [1, 2, 3, 4, 5];
+  constructor(private CheckoutService: CheckoutService, private imgService: ImgService, private prodottiService: ProdottiService) {}
 
-  // resoconto: utenteCheckoutModel[] = [];
-  resoconto: utenteCheckoutModel[];
-  prodotti: prodottoModel[] = [];
-  prodottiList: prodottoModel[][] = []; // crea un array di array che contiene l array prodotti
+  ordini: utenteCheckoutModel[] = this.CheckoutService.getOrdini();
 
-
-  constructor(private serviceU :CheckoutService,private service:ImgService,private prodottoService:ProdottiService) {
-    this.resoconto = this.serviceU.getOrdini() ?? [];
-    console.log(this.resoconto);
-
-    // for(let i = 0; i < this.resoconto.length; i++){
-    //   // this.prodottiList = new Array(this.resoconto.length).fill([]).map(() => new Array());
-    //   this.prodottiList[i] = [];
-
-    //   for(let j=0;j<this.resoconto[i].details.length;j++){
-    //     this.prodottoService.getProdotto(this.resoconto[i].details[j].idproduct).subscribe({
-    //       next: (data: prodottoModel) => {
-    //         this.prodottiList[i].push(data);
-    //       },
-    //       error: (error) => console.log(error)
-    //     });
-    //   }
-    // }
-
-    // console.log(this.prodottiList);
-
+  get orderTotal(): number {
+    return 2;
+    //return this.orderItems.reduce((total) => total + item.price, 0);
   }
   
-
-
-  setImage(item: prodottoModel) {
-    return this.service.getImmagine(item)[0];
+  goToHome() {
+    // Logica per tornare alla home page
+    console.log('Tornando alla home...');
   }
-
-
-
   
 
 }

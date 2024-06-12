@@ -1,17 +1,16 @@
-.card {
-    float: left;
+/* order-summary.component.css */
+.container-fluid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card {
     border: 3px solid black; /* Aggiunto bordo nero di 3px */
-}
-
-.clear {
-    clear: both;
-}
-
-.card-deck {
-    width: 100%;
-}
-
-.card-title {
+  }
+  
+  .card-title {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -21,37 +20,76 @@
     line-height: 1.5em;
     position: relative;
     transition: all 0.3s ease-in-out;
-}
-
-.card-title.hovered {
+  }
+  
+  .card-title.hovered {
     -webkit-line-clamp: unset;
     overflow: auto;
     max-height: 3em;
     padding-right: 10px;
     white-space: normal;
-}
-
-.star-rating {
+  }
+  
+  .star-rating {
     display: flex;
     justify-content: center;
     padding: 0.5rem 0;
     font-size: 1.5rem;
-}
-
-.star {
+  }
+  
+  .star {
     color: #ddd;
     position: relative;
     display: inline-block;
-}
-
-.star.checked {
+  }
+  
+  .star.checked {
     color: #ffcc00;
-}
-
-.star.half::before {
+  }
+  
+  .star.half::before {
     content: "\2605";
     position: absolute;
     color: #ffcc00;
     width: 50%;
     overflow: hidden;
-}
+  }
+  
+  /* Fixed width for cards */
+  .fixed-card {
+    flex: 0 0 auto;
+    width: 18%;
+    padding: 0.5rem;
+  }
+  
+  /* Adjustments for different screen sizes */
+  @media (max-width: 1400px) {
+    .fixed-card {
+      width: 20%;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .fixed-card {
+      width: 25%;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .fixed-card {
+      width: 33.333%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .fixed-card {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .fixed-card {
+      width: 100%;
+    }
+  }
+  

@@ -1,4 +1,17 @@
-<form #searchForm class="form">
-    <input class="searchbar" type="search" placeholder="Search" >
-  </form>
-  <a (click)="ricercaNomeComponent.onSubmit(searchForm)" class="bottone" [routerLink]="['/ricerca']">Cerca</a>
+<!-- search.component.html -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <form #searchForm class="form-inline" (ngSubmit)="ricercaNomeComponent.onSubmit(searchForm)">
+        <div class="input-group w-100">
+          <input class="form-control form-control-lg" type="search" placeholder="Search" ngModel name="query">
+          <div class="input-group-append">
+            <a (click)="ricercaNomeComponent.onSubmit(searchForm)" class="btn btn-primary btn-lg" [routerLink]="['/ricerca']">Cerca</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

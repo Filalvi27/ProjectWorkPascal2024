@@ -1,0 +1,31 @@
+/* search.component.css */
+.input-group .form-control {
+    border-right: 0;
+  }
+  
+  .input-group .input-group-append .btn {
+    border-left: 0;
+  }
+  
+  .form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+  }
+  
+  .form-control:focus {
+    box-shadow: none;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+  
+
+
+  
