@@ -1,6 +1,6 @@
 <!-- <h1>navbar categorie</h1> -->
 <form class="formCategory">
-  <div>
+  <div> <!--
     <div class="form-check">
       <input class="form-check-input" type="radio" name="categoria" id="categoria1" value="1" (change)="onSubmit()" checked="true">
       <label class="form-check-label" for="categoria1">Abbigliamento</label>
@@ -20,6 +20,29 @@
     <div class="form-check">
       <input class="form-check-input" type="radio" name="categoria" id="categoria5" value="5" (change)="onSubmit()">
       <label class="form-check-label" for="categoria5">Varie</label>
+    </div> -->
+
+    <div class="radio-inputs">
+      <label class="radio">
+        <input type="radio" name="categoria" id="categoria1" value="1" (change)="onSubmit()" checked/>
+        <label class="name" for="categoria1">Abbigliamento</label>
+      </label>
+      <label class="radio">
+        <input type="radio" name="categoria" id="categoria2" (change)="onSubmit()" value="2"/>
+        <label class="name" for="categoria2">Elettronica</label>
+      </label>
+      <label class="radio">
+        <input type="radio" name="categoria" id="categoria3" (change)="onSubmit()" value="3"/>
+        <label class="name" for="categoria3">Mobili</label>
+      </label>
+      <label class="radio">
+        <input type="radio" name="categoria" id="categoria4" (change)="onSubmit()" value="4"/>
+        <label class="name" for="categoria4">Scarpe</label>
+      </label>
+      <label class="radio">
+        <input type="radio" name="categoria" id="categoria5" (change)="onSubmit()" value="5"/>
+        <label class="name" for="categoria5">Varie</label>
+      </label>
     </div>
   </div>
 </form>

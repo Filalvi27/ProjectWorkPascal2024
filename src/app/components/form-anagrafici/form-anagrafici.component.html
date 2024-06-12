@@ -1,88 +1,159 @@
-<form [formGroup]="inputForm">
-    <div>
-        <label for="totalPrice">Prezzo Totale {{totale | currency}}:</label>
-    </div>
 
-
-    <div *ngIf="showfirst">
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" formControlName="email" required>
-        </div>
-
-        <div>
-            <label for="clientName">Client Name:</label>
-            <input type="text" id="clientName" formControlName="clientName" required>
-        </div>
-
-        <div>
-            <label for="address">Address:</label>
-            <input type="text" id="address" formControlName="address" required>
-        </div>
-
-
-        <button type="submit" [disabled]="!inputForm.get('clientName')?.valid || !inputForm.get('address')?.valid || !inputForm.get('email')?.valid"
-            (click)="showfirst = false ">Submit</button>
-    </div>
-
-    <div *ngIf="!showfirst">
-        <div>
-            <label for="paymentNumber">Payment Number:</label>
-            <input type="text" id="paymentNumber" formControlName="paymentNumber" placeholder="1234567890123456" required>
-        </div>
-        <div>
-            <label for="paymentOwnerName">Owner Name:</label>
-            <input type="text" id="paymentOwnerName" formControlName="paymentOwnerName" required>
-        </div>
-        <div>
-            <label for="paymentExpire">Expire:</label>
-            <input type="text" id="paymentExpire" formControlName="paymentExpire" placeholder="MMYY" required>
-        </div>
-        <div> 
-            <label for="paymentCvv">CVV/CVC:</label>
-            <input type="number" id="paymentCvv" formControlName="paymentCvv" placeholder="123 or 1234" required>
-        </div>
-
-
-        <a (click)="onSubmit()" [routerLink]="['/resoconto']" class="btn btn-primary" >Vai al pagamento</a><!--[disabled]="calcolaTotale()==0"-->
-
-        <button type="button" (click)="showfirst = true">Indietro</button>
-        <!-- <button type="button" (click)="showFirstThree = true">First Three</button> -->
-    </div>
-
-</form>
-
-
-
-
-<div class="container">
-    <div class="row">
-
-
-        <div class="col-md-8">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Prodotto</th>
-                        <th></th>
-                        <th>Prezzo</th>
-                        <th>Quantità</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of prodotti">
-                        <td><img src="{{setImage(item)}}" class="img-fluid" alt="" style="width:100px;height:100px;">
-                        </td>
-                        <td>{{item.title}}</td>
-                        <td>{{item.price}} €</td>
-                        <td>
-                            {{item.quantity}}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-
-    </div>
+<div class="prezzo">
+    <button>
+        <a class="btn2"><span class="spn2"><label for="totalPrice">Prezzo Totale: {{ totale | currency }}:</label></span></a>
+      </button>
 </div>
+  <div class="container">
+    <div class="form-container">
+      <form [formGroup]="inputForm">
+        <div *ngIf="showfirst">
+          <div class="card">
+            <a class="login">Dati Utente</a>
+            <div class="inputBox">
+              <input
+                type="email"
+                formControlName="email"
+                id="email"
+                required
+              />
+              <label class="user" for="email">Email</label>
+            </div>
+
+            <div class="inputBox">
+              <input
+                type="clientName"
+                formControlName="clientName"
+                id="clientName"
+                required
+              />
+              <label class="user" for="clientName">Nome Cliente</label>
+            </div>
+
+            <div class="inputBox">
+              <input
+                type="address"
+                formControlName="address"
+                id="address"
+                required
+              />
+              <label class="user" for="address">Indirizzo</label>
+            </div>
+
+            <button
+              type="submit"
+              class="enter"
+              [disabled]="
+                !inputForm.get('clientName')?.valid ||
+                !inputForm.get('address')?.valid ||
+                !inputForm.get('email')?.valid
+              "
+              (click)="showfirst = false"
+            >
+              Procedi
+            </button>
+          </div>
+        </div>
+
+        <div *ngIf="!showfirst">
+          <section class="add-card page">
+            <form class="form">
+              <label for="paymentOwnerName" class="label">
+                <span class="title">Card holder full name</span>
+                <input
+                  id="paymentOwnerName" 
+                  formControlName="paymentOwnerName"
+                  class="input-field"
+                  type="text"
+                  name="input-name"
+                  title="Input title"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </label>
+              <label for="paymentNumber" class="label">
+                <span class="title">Card Number</span>
+                <input
+                  type="text" 
+                  id="paymentNumber" 
+                  formControlName="paymentNumber"
+                  class="input-field"
+                  name="input-name"
+                  title="Input title"
+                  placeholder="0000 0000 0000 0000"
+                  required
+                />
+              </label>
+              <div class="split">
+                <label for="paymentExpire" class="label">
+                  <span class="title">Expiry Date</span>
+                  <input
+                    type="text" 
+                    id="paymentExpire" 
+                    formControlName="paymentExpire" 
+                    class="input-field"
+                    type="text"
+                    name="input-name"
+                    title="Expiry Date"
+                    placeholder="MMYY"
+                    required
+                  />
+                </label>
+                <label for="paymentCvv" class="label">
+                  <span class="title"> CVV</span>
+                  <input
+                    type="number" 
+                    id="paymentCvv" 
+                    formControlName="paymentCvv"
+                    class="input-field"
+                    type="number"
+                    name="cvv"
+                    title="CVV"
+                    placeholder="CVV"
+                    required
+                  />
+                </label>
+              </div>
+              <button type="button" (click)="showfirst = true">Indietro</button>
+              <input (click)="onSubmit()" [routerLink]="['/resoconto']" class="checkout-btn" type="button" value="Checkout" />
+            </form>
+          </section>
+        </div>
+      </form>
+    </div>
+
+    <div class="container_prodotti">
+      <div class="row">
+        <div class="col-md-8">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Prodotto</th>
+                <th></th>
+                <th>Prezzo</th>
+                <th>Quantità</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of prodotti">
+                <td>
+                  <img
+                    src="{{ setImage(item) }}"
+                    class="img-fluid"
+                    alt=""
+                    style="width: 100px; height: 100px"
+                  />
+                </td>
+                <td>{{ item.title }}</td>
+                <td>{{ item.price }} €</td>
+                <td>
+                  {{ item.quantity }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
