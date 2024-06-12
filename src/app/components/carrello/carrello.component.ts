@@ -1,56 +1,43 @@
 import { Component } from '@angular/core';
-import { carrelloModel } from '../../models/carrelloModel';
 import { CommonModule } from '@angular/common';
 import { prodottoModel } from '../../models/prodottoModel';
-import {ImgService} from '../../services/img.service';
-import {ProdottiService} from '../../services/prodotti.service';
-import {CarrelloService} from '../../services/carrello.service';
-
+import { ImgService } from '../../services/img.service';
+import { CarrelloService } from '../../services/carrello.service';
 import { RouterModule } from '@angular/router';
-
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
 
 @Component({
   selector: 'app-carrello',
   standalone: true,
-  imports: [CommonModule,RouterModule,RicercaNomeComponent],
+  imports: [CommonModule, RouterModule, RicercaNomeComponent],
   templateUrl: './carrello.component.html',
-  styleUrl: './carrello.component.css'
+  styleUrl: './carrello.component.css',
 })
-
 export class CarrelloComponent {
-
   carrello: prodottoModel[];
 
-
-  constructor(private service:ImgService,private serviceP:ProdottiService, private serviceC: CarrelloService) 
-  { 
+  constructor(private service: ImgService, private serviceC: CarrelloService) {
     this.carrello = this.serviceC.getCarrello() ?? [];
-    
+
     console.log(this.carrello);
   }
 
-
-
-  incrementa(item: prodottoModel)
-  {
-    this.serviceC.aggiungiCarello(item);
+  incrementa(item: prodottoModel) {
+    this.serviceC.aggiungi1AlCarrello(item);
     this.carrello = this.serviceC.getCarrello();
   }
 
-  decrementa(item: prodottoModel){
+  decrementa(item: prodottoModel) {
     this.serviceC.rimuoviCarrello(item);
     this.carrello = this.serviceC.getCarrello();
-
   }
 
-  calcolaTotale(){
-
+  calcolaTotale() {
     let totale = 0;
-    totale= this.carrello.reduce((acc, item) => acc + (item.price*item.quantity), 0);
-    // console.log(totale);
+    totale = this.carrello.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
 
     this.serviceC.setTotale(totale);
     return totale;
@@ -60,12 +47,8 @@ export class CarrelloComponent {
     return this.service.getImmagine(item)[0];
   }
 
-  elimina(item: prodottoModel){
+  elimina(item: prodottoModel) {
     this.serviceC.eliminaCarrello(item);
-    this.carrello = this.serviceC.getCarrello();  
+    this.carrello = this.serviceC.getCarrello();
   }
-
-
 }
-
-

@@ -9,7 +9,7 @@ import { ImgService } from '../../services/img.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './card-piccola.component.html',
-  styleUrls: ['./card-piccola.component.css']
+  styleUrls: ['./card-piccola.component.css'],
 })
 export class CardPiccolaComponent {
   @Input() prodotti: prodottoModel[] = [];

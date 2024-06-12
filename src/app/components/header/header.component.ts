@@ -8,22 +8,21 @@ import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, RouterModule,RicercaNomeComponent],
+  imports: [CommonModule, RouterModule, RicercaNomeComponent],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-
   searchText: string = '';
   selectedCategory: number = 0;
-  selectedCategoryNome: string = "All";
+  selectedCategoryNome: string = 'All';
 
-  constructor(private prodottiService: ProdottiService) { }
+  constructor(private prodottiService: ProdottiService) {}
 
   onHome() {
     this.prodottiService.setSearchValue(undefined, 0);
     this.searchText = '';
     this.selectedCategory = 0;
-    this.selectedCategoryNome = "All";
+    this.selectedCategoryNome = 'All';
   }
 }

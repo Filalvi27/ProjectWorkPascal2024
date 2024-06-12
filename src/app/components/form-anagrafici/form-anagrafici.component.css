@@ -47,7 +47,9 @@
   gap: 35px;
   background: #e3e3e3;
   box-shadow: 16px 16px 32px #c8c8c8,
-          -16px -16px 32px #fefefe;
+          -16px -16px 32px #fefefe,
+          -16px  16px 32px #c8c8c8,
+           16px -16px 32px #fefefe;
   border-radius: 8px;
 }
 
@@ -314,4 +316,13 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
+  }
+
+  /********* modifiche f4rry *************/
+
+  .back{
+    background-color: #fefefefe;
+    border-radius: 10px;
+    margin-bottom: -12px;
+    margin-top: 5px;
   }

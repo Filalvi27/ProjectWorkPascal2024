@@ -1,8 +1,7 @@
-/* style.css */
 .search {
   display: flex;
   justify-content: center;
-  align-items: center; /* Centra verticalmente */
+  align-items: center; 
   width: 100%;
   height: 50px;
   margin-top: 15px;
@@ -11,12 +10,12 @@
 .search-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centra orizzontalmente */
-  width: 100%; /* Larghezza della barra di ricerca e del menu */
+  justify-content: center; 
+  width: 100%; 
 }
 
 .search-dropdown-wrapper {
-  margin-right: 10px; /* Aggiungi uno spazio tra la barra di ricerca e il menu */
+  margin-right: 10px; 
 }
 
 .searchbar {
@@ -25,7 +24,7 @@
 }
 
 .bottone {
-  width: auto; /* Larghezza automatica in base al testo */
+  width: auto; 
   height: 30px;
 }
 
@@ -46,7 +45,7 @@
 }
 
 .value {
-  font-size: 20px; /* Aumenta la dimensione del testo */
+  font-size: 20px; 
   background-color: transparent;
   border: none;
   padding: 10px;
@@ -59,7 +58,6 @@
   transition: 1s;
   box-sizing: border-box;
 }
-
 
 .value:not(:active):hover,
 .value:focus {
@@ -118,15 +116,13 @@
 }
 
 .dropdown {
-  flex: 1; /* Usa lo spazio rimanente */
+  flex: 1; 
 }
-
-
 
 .paste-button {
   position: relative;
   display: block;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .button {
@@ -151,7 +147,7 @@
   background-color: #000;
   border: 2px solid #cac7c7;
   border-radius: 0px 15px 15px 15px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown-content a {

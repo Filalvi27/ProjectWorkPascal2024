@@ -9,11 +9,15 @@ import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardPiccolaComponent, RouterModule, CommonModule, RicercaNomeComponent],
+  imports: [
+    CardPiccolaComponent,
+    RouterModule,
+    CommonModule,
+    RicercaNomeComponent,
+  ],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
-
 export class HomeComponent {
   prodotti: prodottoModel[] = [];
   currentPage: number = 1;
@@ -24,13 +28,13 @@ export class HomeComponent {
 
   loadCards(page: number) {
     this.prodottoService.getProdotti(page).subscribe(
-      prodotti => {this.prodotti = prodotti;
+      (prodotti) => {
+        this.prodotti = prodotti;
         console.log(this.currentPage);
         console.log(this.prodotti);
       },
-      error => console.error(error)
+      (error) => console.error(error)
     );
-    
   }
 
   onPageSelect(page: number) {

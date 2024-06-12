@@ -15,26 +15,31 @@
         </thead>
         <tbody>
           <tr *ngFor="let item of carrello">
-            <!-- <td><img src="{{item.images}}" class="img-fluid" alt=""></td> -->
-            <td><img src="{{setImage(item)}}" class="img-fluid" alt="" style="width:100px;height:100px;" [routerLink]="['/card', item.id]"></td>
-            <td>{{item.title}} Taglia: {{item.taglia}}</td>
-            <td>{{item.price}} €</td>
+            <td>
+              <img
+                src="{{ setImage(item) }}"
+                class="img-fluid"
+                alt=""
+                style="width: 100px; height: 100px"
+                [routerLink]="['/card', item.id]"
+              />
+            </td>
+            <td>{{ item.title }} Taglia: {{ item.taglia }}</td>
+            <td>{{ item.price }} €</td>
             <td>
               <div>
-                <button class="btn btn-secondary btn-sm" (click)="incrementa(item)">+</button>
-                {{item.quantity}}
-                <button class="btn btn-secondary btn-sm" (click)="decrementa(item)">-</button>
-  
-
+                <button class="button" (click)="incrementa(item)">+</button>
+                {{ item.quantity }}
+                <button class="button" (click)="decrementa(item)">-</button>
               </div>
 
               <div>
-                <button class="btn btn-secondary btn-sm" (click)="elimina(item)">Elimina</button>
-
+                <button class="button elimina" (click)="elimina(item)">
+                  Elimina
+                </button>
               </div>
             </td>
-            <td>{{item.price * item.quantity}} €</td>
-            <!-- <td>{{item.price}} €</td> -->
+            <td>{{ item.price * item.quantity }} €</td>
           </tr>
         </tbody>
       </table>
@@ -43,8 +48,8 @@
       <div class="card">
         <h5 class="card-header">Riepilogo ordine</h5>
         <div class="card-body">
-          <h5 class="card-title">Totale: {{calcolaTotale()}} €</h5>
-          <a [routerLink]="['/formAnagrafici']" class="btn btn-primary" >Vai al pagamento</a><!--[disabled]="calcolaTotale()==0"-->
+          <h5 class="card-title">Totale: {{ calcolaTotale() }} €</h5>
+          <a [routerLink]="['/formAnagrafici']" class="btn btn-primary">Vai al pagamento</a>
         </div>
       </div>
     </div>

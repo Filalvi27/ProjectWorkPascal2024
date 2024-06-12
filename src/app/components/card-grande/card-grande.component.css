@@ -2,7 +2,7 @@
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 2%;
-    width: 90%; /* Ho aumentato la larghezza al 90% per adattarsi meglio al layout */
+    width: 90%; 
     height: auto;
     display: flex;
     justify-content: center;
@@ -27,9 +27,10 @@
 }
 
 .star.half::before {
-    content: "\2605"; /* Unicode character for star */
+    content: "\2605"; 
     position: absolute;
     color: #ffcc00;
     width: 50%;
     overflow: hidden;
 }
+

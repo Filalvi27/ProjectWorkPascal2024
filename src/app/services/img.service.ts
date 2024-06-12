@@ -1,26 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {prodottoModel} from "../models/prodottoModel";
-
+import { prodottoModel } from '../models/prodottoModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ImgService {
-
-  constructor() { }
+  constructor() {}
 
   //URL
-    getImmagine(item:prodottoModel):string[]{
+  getImmagine(item: prodottoModel): string[] {
+    let img = item.images.split(';');
+    let key: string[] = [];
 
-      let img = item.images.split(';');
-      let key: string[] = [];
-
-      for(let i = 0; i < img.length; i++){
-        key.push(`https://storage.googleapis.com/projectworkpascal/${img[i]}`);
-      }
-
-      // console.log(key);
-    return key;
+    for (let i = 0; i < img.length; i++) {
+      key.push(`https://storage.googleapis.com/projectworkpascal/${img[i]}`);
     }
+
+    // console.log(key);
+    return key;
+  }
 }

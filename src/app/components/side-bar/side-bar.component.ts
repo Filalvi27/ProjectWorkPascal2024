@@ -7,9 +7,8 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './side-bar.component.html',
-  styleUrl: './side-bar.component.css'
+  styleUrl: './side-bar.component.css',
 })
-
 export class SideBarComponent {
   toggleSidebar() {
     const sidebar = document.getElementById('sidebar') as HTMLDivElement;

@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CardPiccolaComponent, RouterModule, CommonModule],
   templateUrl: './ricerca-categoria.component.html',
-  styleUrls: ['./ricerca-categoria.component.css']
+  styleUrls: ['./ricerca-categoria.component.css'],
 })
 export class RicercaCategoriaComponent {
   prodotti: prodottoModel[] = [];
@@ -20,43 +20,38 @@ export class RicercaCategoriaComponent {
   tot: number = 0;
   totArray: number[] = [];
 
-
   constructor(private prodottoService: ProdottiService) {
     this.loadCards(this.id, this.currentPage);
 
     this.prodottoService.getTotal(this.id, this.currentPage).subscribe({
-      next: t => {
+      next: (t) => {
         this.tot = t;
         this.tot = Math.ceil(this.tot / 10);
         console.log(this.tot);
         for (let i = 0; i < this.tot; i++) {
           this.totArray.push(i + 1);
-        };
+        }
         console.log(this.totArray);
       },
-      error: error => console.error(error)
+      error: (error) => console.error(error),
     });
 
     // this.tot = Math.ceil(this.tot / 10);
     // for (let i = 0; i < this.tot; i++) {
     //   this.totArray.push(i + 1);
     // }
-
-
-
   }
 
   loadCards(id: number, page: number) {
     this.prodottoService.getCategory(id, page).subscribe({
-      next: prodotti => this.prodotti = prodotti,
-      error: error => console.error(error)
+      next: (prodotti) => (this.prodotti = prodotti),
+      error: (error) => console.error(error),
     });
 
     // this.prodottoService.getTotal(id, page).subscribe({
     //   next: prodotti => this.tot = prodotti,
     //   error: error => console.error(error)
     // });
-
 
     // console.log(this.tot);
     // console.log(this.prodotti);
@@ -65,19 +60,19 @@ export class RicercaCategoriaComponent {
   onPageSelect(page: number) {
     this.currentPage = page;
     this.loadCards(this.id, page);
-
   }
 
-  onSubmit(){
-      let search : number = 0;
-      let element : HTMLInputElement 
+  onSubmit() {
+    let search: number = 0;
+    let element: HTMLInputElement;
     for (let i = 1; i < 6; i++) {
-      element = (<HTMLInputElement>document.getElementById(`categoria${i}`));
-      if(element.checked){
+      element = <HTMLInputElement>document.getElementById(`categoria${i}`);
+      if (element.checked) {
         search = Number(element.value);
       }
     }
-    console.log(search);4
+    console.log(search);
+    4;
     this.loadCards(search, 1);
   }
 }

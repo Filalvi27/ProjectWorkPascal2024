@@ -7,9 +7,8 @@ import { RicercaNomeComponent } from '../ricerca-nome.component';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './search-bar.component.html',
-  styleUrl: './search-bar.component.css'
+  styleUrl: './search-bar.component.css',
 })
 export class SearchBarComponent {
-constructor(public ricercaNomeComponent: RicercaNomeComponent) { }
-  
+  constructor(public ricercaNomeComponent: RicercaNomeComponent) {}
 }

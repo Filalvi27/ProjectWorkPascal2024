@@ -2,13 +2,13 @@
 
 <div *ngIf="prodotto" class="containers">
     <div style="flex: 1;">
-        <!-- Carousel -->
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
+
+        <div id="carouselExampleControls" class="carousel slide border border-dark rounded mb-5" data-bs-ride="carousel"
             style="max-width: 500px; margin: 0 auto;">
-            <div class="carousel-inner">
+            <div class="carousel-inner rounded">
                 <div *ngFor="let image of getImmagini(prodotto); let i = index" class="carousel-item"
                     [ngClass]="{'active': i === 0}">
-                    <img [src]="image" class="d-block w-100" alt="...">
+                    <img [src]="image" class="d-block w-100 rounded" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -22,7 +22,7 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <!-- End of Carousel -->
+
     </div>
     <div style="flex: 1; padding-left: 20px;">
         <div class="text-center">
@@ -40,6 +40,9 @@
                 <!-- Bottoni visibili su schermi grandi -->
                 <div class="btn-group d-none d-md-inline-flex" role="group">
                     <button type="button" class="btn"
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'XS', 'btn-primary': tagliaSelezionata === 'XS'}"
+                        (click)="selezionaTaglia('XS')">XS</button>
+                    <button type="button" class="btn"
                         [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'S', 'btn-primary': tagliaSelezionata === 'S'}"
                         (click)="selezionaTaglia('S')">S</button>
                     <button type="button" class="btn"
@@ -51,6 +54,9 @@
                     <button type="button" class="btn"
                         [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'XL', 'btn-primary': tagliaSelezionata === 'XL'}"
                         (click)="selezionaTaglia('XL')">XL</button>
+                        <button type="button" class="btn"
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'XXL', 'btn-primary': tagliaSelezionata === 'XXL'}"
+                        (click)="selezionaTaglia('XXL')">XXL</button>
                 </div>
                 <!-- Menu a tendina visibile su schermi piccoli -->
                 <div class="dropdown d-md-none">
@@ -59,10 +65,12 @@
                         Seleziona taglia <span *ngIf="tagliaSelezionata">({{ tagliaSelezionata }})</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownTaglie">
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('XS')">XS</a></li>
                         <li><a class="dropdown-item" (click)="selezionaTaglia('S')">S</a></li>
                         <li><a class="dropdown-item" (click)="selezionaTaglia('M')">M</a></li>
                         <li><a class="dropdown-item" (click)="selezionaTaglia('L')">L</a></li>
                         <li><a class="dropdown-item" (click)="selezionaTaglia('XL')">XL</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('XXL')">XXL</a></li>
                     </ul>
                 </div>
             </div>
@@ -73,26 +81,44 @@
                 <!-- Bottoni visibili su schermi grandi -->
                 <div class="btn-group d-none d-md-inline-flex" role="group">
                     <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 38, 'btn-primary': tagliaSelezionata === 38}"
-                        (click)="selezionaTaglia(38)">38</button>
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '36', 'btn-primary': tagliaSelezionata === '36'}"
+                        (click)="selezionaTaglia('36')">36</button>
+                        <button type="button" class="btn"
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '37', 'btn-primary': tagliaSelezionata === '37'}"
+                        (click)="selezionaTaglia('37')">37</button>
                     <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 39, 'btn-primary': tagliaSelezionata === 39}"
-                        (click)="selezionaTaglia(39)">39</button>
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '38', 'btn-primary': tagliaSelezionata === '38'}"
+                        (click)="selezionaTaglia('38')">38</button>
                     <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 40, 'btn-primary': tagliaSelezionata === 40}"
-                        (click)="selezionaTaglia(40)">40</button>
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '39', 'btn-primary': tagliaSelezionata === '39'}"
+                        (click)="selezionaTaglia('39')">39</button>
                     <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 41, 'btn-primary': tagliaSelezionata === 41}"
-                        (click)="selezionaTaglia(41)">41</button>
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '40', 'btn-primary': tagliaSelezionata === '40'}"
+                        (click)="selezionaTaglia('40')">40</button>
                     <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 42, 'btn-primary': tagliaSelezionata === 42}"
-                        (click)="selezionaTaglia(42)">42</button>
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '41', 'btn-primary': tagliaSelezionata === '41'}"
+                        (click)="selezionaTaglia('41')">41</button>
                     <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 43, 'btn-primary': tagliaSelezionata === 43}"
-                        (click)="selezionaTaglia(43)">43</button>
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '42', 'btn-primary': tagliaSelezionata === '42'}"
+                        (click)="selezionaTaglia('42')">42</button>
                     <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 44, 'btn-primary': tagliaSelezionata === 44}"
-                        (click)="selezionaTaglia(44)">44</button>
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '43', 'btn-primary': tagliaSelezionata === '43'}"
+                        (click)="selezionaTaglia('43')">43</button>
+                    <button type="button" class="btn"
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '44', 'btn-primary': tagliaSelezionata === '44'}"
+                        (click)="selezionaTaglia('44')">44</button>
+                        <button type="button" class="btn"
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '45', 'btn-primary': tagliaSelezionata === '45'}"
+                        (click)="selezionaTaglia('45')">45</button>
+                        <button type="button" class="btn"
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '46', 'btn-primary': tagliaSelezionata === '46'}"
+                        (click)="selezionaTaglia('46')">46</button>
+                        <button type="button" class="btn"
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '47', 'btn-primary': tagliaSelezionata === '47'}"
+                        (click)="selezionaTaglia('47')">47</button>
+                        <button type="button" class="btn"
+                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '48', 'btn-primary': tagliaSelezionata === '48'}"
+                        (click)="selezionaTaglia('48')">48</button>
                 </div>
                 <!-- Menu a tendina visibile su schermi piccoli -->
                 <div class="dropdown d-md-none">
@@ -101,13 +127,19 @@
                         Seleziona numero <span *ngIf="tagliaSelezionata">({{ tagliaSelezionata }})</span>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownTaglieScarpe">
-                        <li><a class="dropdown-item" (click)="selezionaTaglia(38)">38</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia(39)">39</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia(40)">40</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia(41)">41</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia(42)">42</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia(43)">43</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia(44)">44</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('36')">36</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('37')">37</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('38')">38</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('39')">39</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('40')">40</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('41')">41</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('42')">42</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('43')">43</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('44')">44</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('45')">45</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('46')">46</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('47')">47</a></li>
+                        <li><a class="dropdown-item" (click)="selezionaTaglia('48')">48</a></li>
                     </ul>
                 </div>
             </div>
