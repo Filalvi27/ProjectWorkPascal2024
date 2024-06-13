@@ -12,7 +12,7 @@
             <!-- Colonna per la foto -->
             <div class="col-md-6 text-center image-column">
                 <div id="carouselExampleControls" class="carousel slide border border-dark rounded mb-5"
-                    data-bs-ride="carousel" data-bs-interval="3000">
+                    data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false" data-bs-wrap="true">
                     <div class="carousel-inner rounded">
                         <div *ngFor="let image of getImmagini(prodotto); let i = index" class="carousel-item"
                             [ngClass]="{'active': i === 0}">

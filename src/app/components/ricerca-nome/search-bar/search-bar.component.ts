@@ -21,9 +21,33 @@ export class SearchBarComponent {
     // Verifica se il tasto premuto è Enter
     if (event.key === 'Enter') {
       // Richiama il metodo onSubmit del componente ricercaNomeComponent
+
+      const searchInput = form.querySelector('input[type="search"]');
+      const searchInputElement = searchInput as HTMLInputElement;
+      const searchText = searchInputElement.value.trim();
+      if (searchText) {
+        this.navigateAndClose('/ricerca');
+        console.log(searchText);
+        this.ricercaNomeComponent.onSubmit(form);
+      }
+      
+      // this.navigateAndClose('/ricerca');
+      // this.ricercaNomeComponent.onSubmit(form);
+    }
+  }
+
+  onAlla(form: HTMLFormElement) {
+
+    const searchInput = form.querySelector('input[type="search"]');
+    const searchInputElement = searchInput as HTMLInputElement;
+    const searchText = searchInputElement.value.trim();
+    if (searchText) {
       this.navigateAndClose('/ricerca');
+      console.log(searchText);
       this.ricercaNomeComponent.onSubmit(form);
     }
+
+
   }
 
   navigateAndClose(route: string) {

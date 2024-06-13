@@ -19,7 +19,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './ricerca-nome.component.html',
   styleUrls: ['./ricerca-nome.component.css'],
 })
-export class RicercaNomeComponent implements OnInit {
+export class RicercaNomeComponent{
   prodotti: prodottoModel[] = [];
   search: string = '';
   searchText: string = '';
@@ -31,23 +31,21 @@ export class RicercaNomeComponent implements OnInit {
   can: boolean = this.prodottiService.getCan();
 
   onSubmit(form: HTMLFormElement) {
-    
-
     const searchInput = form.querySelector('input[type="search"]');
     this.searchText = (searchInput as HTMLInputElement).value;
+    console.log(this.searchText);
+
     (searchInput as HTMLInputElement).value = '';
     console.log(this.selectedCategoryNome);
-    console.log('Cerca da header: ' + this.searchText);
-    this.prodottiService.setSearchValue(this.searchText, this.selectedCategory);
-    this.prodottiService.setCan(true);
-    this.ngOnInit();
+      console.log('Cerca da header: ' + this.searchText);
+      this.prodottiService.setSearchValue(this.searchText, this.selectedCategory);
+      this.prodottiService.setCan(true);
+      this.cerca();
   }
 
   
 
-  ngOnInit() {
-    
-  
+  cerca() {
     this.prodottiService.getSearch(1).subscribe(
       (prodotti) => {
         this.prodotti = prodotti;
