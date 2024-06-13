@@ -13,7 +13,7 @@ import { ImgService } from '../../services/img.service';
 })
 export class CardPiccolaComponent {
   @Input() prodotti: prodottoModel[] = [];
-
+  
   constructor(private service: ImgService) {}
 
   setImage(item: prodottoModel) {
