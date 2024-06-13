@@ -1,111 +1,65 @@
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-top: 50px;
-  padding-bottom: 80px;
-}
-
-.form-container{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  height: 100%;
-  margin-top: 50px;
-  padding-bottom: 80px;
-}
-
-.container_prodotti {
-    width: 40%;
-  }
-
-
-.form-container {
-  margin-right: 20px; /* Spazio tra il form e la tabella */
-}
-
-/* Stili per il form */
 .login {
   color: #000;
   letter-spacing: 2px;
-  display: block;
   font-weight: bold;
   font-size: x-large;
 }
 
-.card {
+.card, .page {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 350px;
-  width: 300px;
   flex-direction: column;
-  gap: 35px;
+  align-items: center;
   background: #e3e3e3;
-  box-shadow: 16px 16px 32px #c8c8c8,
-          -16px -16px 32px #fefefe,
-          -16px  16px 32px #c8c8c8,
-           16px -16px 32px #fefefe;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  gap: 15px;
 }
 
 .inputBox {
   position: relative;
-  width: 250px;
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .inputBox input {
   width: 100%;
   padding: 10px;
+  border: 2px solid #000;
+  border-radius: 5px;
   outline: none;
-  border: none;
-  color: #000;
   font-size: 1em;
-  background: transparent;
-  border-left: 2px solid #000;
-  border-bottom: 2px solid #000;
-  transition: 0.1s;
-  border-bottom-left-radius: 8px;
+  transition: border 0.3s;
 }
 
 .inputBox label {
-  margin-top: 5px;
   position: absolute;
-  left: 0;
-  transform: translateY(-4px);
-  margin-left: 10px;
-  padding: 10px;
-  pointer-events: none;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background: #e3e3e3;
+  padding: 0 5px;
   font-size: 12px;
   color: #000;
-  text-transform: uppercase;
-  transition: 0.5s;
-  letter-spacing: 3px;
-  border-radius: 8px;
+  transition: all 0.3s;
+  pointer-events: none;
 }
 
-.inputBox input:valid~label,
-.inputBox input:focus~label {
-  transform: translateX(113px) translateY(-15px);
-  font-size: 0.8em;
-  padding: 5px 10px;
-  background: #000;
-  letter-spacing: 0.2em;
-  color: #fff;
-  border: 2px;
+.inputBox input:focus + label,
+.inputBox input:valid + label {
+  top: -10px;
+  font-size: 10px;
+  color: #000;
 }
 
-.inputBox input:valid,
-.inputBox input:focus {
-  border: 2px solid #000;
-  border-radius: 8px;
+.split {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 15px;
 }
 
-.enter {
+.btn-action {
   height: 45px;
   width: 100px;
   border-radius: 5px;
@@ -114,215 +68,67 @@
   background-color: transparent;
   transition: 0.5s;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 2px;
   margin-bottom: 1em;
   color: #000;
 }
 
-.enter:hover {
-  background-color: rgb(0, 0, 0);
-  color: white;
+.btn-action:hover {
+  background-color: #000;
+  color: #fff;
 }
 
-/* Stili per la tabella dei prodotti */
+.back {
+  background-color: transparent;
+  border-radius: 5px; 
+}
+
+/* Stili generali */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.container_prodotti {
+  width: 40%;
+}
+
+.table-container {
+  width: 100%;
+}
+
 .table {
   width: 100%;
+  border-collapse: collapse;
 }
 
 .table th, .table td {
   text-align: left;
-  padding: 8px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
 .table th {
-  background-color: #f2f2f2;
+  background-color: #e3e3e3;
 }
 
 .table img {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }
 
-/* Stili per la seconda parte del form */
-/*f4rry*/
-
-.form {
-    background: #0c0f14;
-    box-shadow: 0px 187px 75px rgba(0, 0, 0, 0.01),
-      0px 105px 63px rgba(0, 0, 0, 0.05), 0px 47px 47px rgba(0, 0, 0, 0.09),
-      0px 12px 26px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
-    width: 320px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-    position: relative;
-    border-radius: 25px;
-  }
-  .form .label {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    height: -moz-fit-content;
-    height: fit-content;
-  }
-  .form .label:has(input:focus) .title {
-    top: 0;
-    left: 0;
-    color: #d17842;
-  }
-  .form .label .title {
-    padding: 0 10px;
-    transition: all 300ms;
-    font-size: 12px;
-    color: #8b8e98;
-    font-weight: 600;
-    width: -moz-fit-content;
-    width: fit-content;
-    top: 14px;
-    position: relative;
-    left: 15px;
-    background: #0c0f14;
-  }
-  .form .input-field {
-    width: auto;
-    height: 50px;
-    text-indent: 15px;
-    border-radius: 15px;
-    outline: none;
-    background-color: transparent;
-    border: 1px solid #21262e;
-    transition: all 0.3s;
-    caret-color: #d17842;
-    color: #aeaeae;
-  }
-  
-  .form .input-field:hover {
-    border-color: rgba(209, 121, 66, 0.5);
-  }
-  
-  .form .input-field:focus {
-    border-color: #d17842;
-  }
-  .form .split {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    gap: 15px;
-  }
-  .form .split label {
-    width: 130px;
-  }
-  .form .checkout-btn {
-    margin-top: 20px;
-    padding: 20px 0;
-    border-radius: 25px;
-    font-weight: 700;
-    transition: all 0.3s cubic-bezier(0.15, 0.83, 0.66, 1);
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    border: none;
-    justify-content: center;
-    fill: #fff;
-    color: #fff;
-    border: 2px solid transparent;
-    background: #d17842;
-    transition: all 200ms;
-  }
-  .form .checkout-btn:active {
-    scale: 0.95;
-  }
-  
-  .form .checkout-btn:hover {
-    color: #d17842;
-    border: 2px solid #d17842;
-    background: transparent;
-  }
-  
-/********************/
-
-
-
-.btn2 {
-    position: relative;
-    display: inline-block;
-    padding: 15px 30px;
-    border: 2px solid #fefefe;
-    text-transform: uppercase;
-    color: #fefefe;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 20px;
-    transition: 0.3s;
-  }
-  
-  .btn2::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% - -2px);
-    background-color: #212121;
-    transition: 0.3s ease-out;
-    transform: scaleY(1);
-  }
-  
-  .btn2::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: calc(100% - 50px);
-    background-color: #212121;
-    transition: 0.3s ease-out;
-    transform: scaleY(1);
-  }
-  
-  .btn2:hover::before {
-    transform: translateY(-25px);
-    height: 0;
-  }
-  
-  .btn2:hover::after {
-    transform: scaleX(0);
-    transition-delay: 0.15s;
-  }
-  
-  .btn2:hover {
-    border: 2px solid #fefefe;
-    color: #000;
-  }
-  
-  .btn2 span {
-    position: relative;
-    z-index: 3;
-  }
-  
-  button {
-    text-decoration: none;
-    border: none;
-    background-color: transparent;
-  }
-
-  .prezzo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-  }
-
-  /********* modifiche f4rry *************/
-
-  .back{
-    background-color: #fefefefe;
-    border-radius: 10px;
-    margin-bottom: -12px;
-    margin-top: 5px;
-  }
+.checkout {
+  height: 50px; 
+  width: 120px; 
+}
