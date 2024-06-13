@@ -22,6 +22,8 @@ export class CheckoutService {
     return this.ordiniPrecedenti;
   }
   metodoPost(ordine: utenteCheckoutModel) {
+    localStorage.removeItem('carrello');
+    localStorage.removeItem('totale');
     this.ordiniPrecedenti.push(ordine);
     console.log(this.ordiniPrecedenti);
     console.log('post fatto');
