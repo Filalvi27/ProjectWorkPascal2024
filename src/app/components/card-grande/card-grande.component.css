@@ -12,7 +12,7 @@
 
 @media (max-width: 767.98px) {
   #quantita {
-    width: 75% !important; /* Applica larghezza del 75% per schermi piccoli */
+    width: 75% !important;
   }
 }
 
@@ -40,9 +40,10 @@
     .description-other {
         order: 2;
     }
+
     #quantita {
-        width: 25% !important; /* Applica larghezza del 25% per schermi grandi */
-      }
+        width: 25% !important;
+    }
 }
 
 .star-rating {
@@ -70,48 +71,43 @@
     overflow: hidden;
 }
 
-/* Default state of the dropdown button */
 .dropdown-toggle {
-    background-color: transparent; /* Matches the default button color */
-    color: #007bff; /* Default text color */
-    border: 1px solid #007bff; /* Border color matches the primary button color */
-    border-radius: 0.25rem; /* Matches Bootstrap's button border-radius */
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 0.25rem;
 }
 
-/* Hover state of the dropdown button */
 .dropdown-toggle:hover {
-    background-color: #007bff; /* Background color on hover */
-    color: white; /* White text on hover */
-    border-color: #007bff; /* Border color remains the same */
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
 }
 
-/* Styling for the dropdown menu */
 .dropdown-menu {
     width: 100%;
     border-radius: 0.25rem;
 }
 
-/* Item styling within the dropdown */
 .dropdown-item {
-    color: black; /* Default text color */
+    color: black;
 }
 
 .dropdown-item:hover {
-    background-color: #007bff; /* Primary color on hover */
-    color: white; /* White text on hover */
+    background-color: #007bff;
+    color: white;
 }
 
-/* For select dropdown */
 .form-select {
     border: none;
-    background-color: #007bff; /* Matches primary button color */
-    color: white; /* White text color */
+    background-color: #007bff;
+    color: white;
     text-align: center;
-    border-radius: 0.25rem; /* Matches Bootstrap's button border-radius */
+    border-radius: 0.25rem;
 }
 
-/* Option styling */
 .form-select option {
-    background-color: white; /* Default background */
-    color: black; /* Default text color */
+    background-color: white;
+    color: black;
 }
+

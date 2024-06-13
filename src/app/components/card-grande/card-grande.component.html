@@ -1,5 +1,3 @@
-<app-ricerca-nome></app-ricerca-nome>
-
 <div class="d-flex justify-content-center align-items-center">
     <div *ngIf="prodotto" class="container text-center">
         <div class="row justify-content-center">
@@ -11,7 +9,6 @@
 
             <!-- Colonna per la foto -->
             <div class="col-md-6 text-center image-column">
-                <!-- Unico Carousel per tutti i dispositivi -->
                 <div id="carouselExampleControls" class="carousel slide border border-dark rounded mb-5"
                     data-bs-ride="carousel" data-bs-interval="3000">
                     <div class="carousel-inner rounded">
@@ -90,10 +87,11 @@
                     <div class="mt-5 text-center">
                         <label for="quantita" class="form-label fs-6 mb-0">Quantità:</label>
                     </div>
-                    
+
                     <div class="mb-5 d-flex justify-content-center align-items-center">
                         <div class="dropdown">
-                            <button class="btn dropdown-toggle" type="button" id="dropdownQuantita" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownQuantita"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Seleziona quantità <span *ngIf="quantitaSelezionata">({{ quantitaSelezionata }})</span>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownQuantita">
@@ -103,20 +101,28 @@
                             </ul>
                         </div>
                     </div>
-                    
+
                     <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
-                    <a class="btn btn-primary mb-3" (click)="aggiungiAlCarrello()">
-                        {{ itemInCart ? '' : 'Add to cart' }}
-                        <ng-container *ngIf="itemInCart">
-                            <a class="btn btn-primary">Add to cart</a>
-                            <a [routerLink]="['/cart']" class="btn btn-primary">View Cart</a>
-                        </ng-container>
-                    </a>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" style="height: 37.6px; width: 45%;" (click)="aggiungiAlCarrello()">Aggiungi al
+                            carrello</button>
+                        <button *ngIf="itemInCart" class="btn btn-secondary ms-2" style="height: 37.6px; width: 45%;"
+                            [routerLink]="['/cart']">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+                            </svg>
+                            Vedi carrello
+                        </button>
+
+                    </div>
                     <div class="text-success" *ngIf="prodotto.addedToCart">
-                        <i class="fa fa-check"></i>
+                        <i class="fa fa-check"></i> Aggiunto al carrello
                     </div>
                     <div class="text-danger" *ngIf="prodotto.addedToCart === false">
-                        <i class="fa fa-times"></i>
+                        <i class="fa fa-times"></i> Non aggiunto al carrello
                     </div>
                 </div>
             </div>
