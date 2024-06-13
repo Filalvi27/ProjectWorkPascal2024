@@ -4,7 +4,11 @@ body
     height: 100vh;
     background-color: #cac7c7;
 }
-
+::-webkit-scrollbar {
+    width: 0px; 
+  }
+  
+/* 
 .sidebar
 {
     width: 20%;
@@ -17,4 +21,4 @@ body
     width: 80%;
     float: left;
     padding: 30px;
-}
+} */

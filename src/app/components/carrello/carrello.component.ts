@@ -6,6 +6,7 @@ import { CarrelloService } from '../../services/carrello.service';
 import { RouterModule } from '@angular/router';
 import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
 
+
 @Component({
   selector: 'app-carrello',
   standalone: true,

@@ -5,4 +5,4 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
 
-  console.log('le coste del senegal e del NIGGER');
+  console.log('started...');
