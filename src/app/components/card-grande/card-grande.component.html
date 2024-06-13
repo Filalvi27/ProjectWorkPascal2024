@@ -1,172 +1,132 @@
 <app-ricerca-nome></app-ricerca-nome>
 
-<div *ngIf="prodotto" class="containers">
-    <div style="flex: 1;">
-
-        <div id="carouselExampleControls" class="carousel slide border border-dark rounded mb-5" data-bs-ride="carousel"
-            style="max-width: 500px; margin: 0 auto;">
-            <div class="carousel-inner rounded">
-                <div *ngFor="let image of getImmagini(prodotto); let i = index" class="carousel-item"
-                    [ngClass]="{'active': i === 0}">
-                    <img [src]="image" class="d-block w-100 rounded" alt="...">
-                </div>
+<div class="d-flex justify-content-center align-items-center">
+    <div *ngIf="prodotto" class="container text-center">
+        <div class="row justify-content-center">
+            <!-- Colonna per il titolo e la categoria -->
+            <div class="col-12 text-center title-category-column d-md-none">
+                <h1><strong>{{ prodotto.title }}</strong></h1>
+                <p><strong>Categoria:</strong> {{ prodotto.category.name }}</p>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
 
-    </div>
-    <div style="flex: 1; padding-left: 20px;">
-        <div class="text-center">
-            <h1><strong>{{ prodotto.title }}</strong></h1>
-            <p><strong>Categoria:</strong> {{ prodotto.category.name }}</p>
-            <p><strong>Description:</strong> {{ prodotto.description }}</p>
-            <span class="star-rating">
-                <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
-                    <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
-                </ng-container>
-            </span>
-
-            <!-- Bottoni taglia per prodotti con idCategory == 1 -->
-            <div *ngIf="prodotto.idCategory === 1" class="mb-3">
-                <!-- Bottoni visibili su schermi grandi -->
-                <div class="btn-group d-none d-md-inline-flex" role="group">
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'XS', 'btn-primary': tagliaSelezionata === 'XS'}"
-                        (click)="selezionaTaglia('XS')">XS</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'S', 'btn-primary': tagliaSelezionata === 'S'}"
-                        (click)="selezionaTaglia('S')">S</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'M', 'btn-primary': tagliaSelezionata === 'M'}"
-                        (click)="selezionaTaglia('M')">M</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'L', 'btn-primary': tagliaSelezionata === 'L'}"
-                        (click)="selezionaTaglia('L')">L</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'XL', 'btn-primary': tagliaSelezionata === 'XL'}"
-                        (click)="selezionaTaglia('XL')">XL</button>
-                        <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== 'XXL', 'btn-primary': tagliaSelezionata === 'XXL'}"
-                        (click)="selezionaTaglia('XXL')">XXL</button>
-                </div>
-                <!-- Menu a tendina visibile su schermi piccoli -->
-                <div class="dropdown d-md-none">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownTaglie"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Seleziona taglia <span *ngIf="tagliaSelezionata">({{ tagliaSelezionata }})</span>
+            <!-- Colonna per la foto -->
+            <div class="col-md-6 text-center image-column">
+                <div id="carouselExampleControls" class="carousel slide border border-dark rounded mb-5"
+                    data-bs-ride="carousel" data-bs-interval="3000">
+                    <div class="carousel-inner rounded">
+                        <div *ngFor="let image of getImmagini(prodotto); let i = index" class="carousel-item"
+                            [ngClass]="{'active': i === 0}">
+                            <img [src]="image" class="d-block w-100 rounded" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownTaglie">
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('XS')">XS</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('S')">S</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('M')">M</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('L')">L</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('XL')">XL</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('XXL')">XXL</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Fine bottoni taglia -->
-
-            <!-- Bottoni numero scarpe per prodotti con idCategory == 4 -->
-            <div *ngIf="prodotto.idCategory === 4" class="mb-3">
-                <!-- Bottoni visibili su schermi grandi -->
-                <div class="btn-group d-none d-md-inline-flex" role="group">
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '36', 'btn-primary': tagliaSelezionata === '36'}"
-                        (click)="selezionaTaglia('36')">36</button>
-                        <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '37', 'btn-primary': tagliaSelezionata === '37'}"
-                        (click)="selezionaTaglia('37')">37</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '38', 'btn-primary': tagliaSelezionata === '38'}"
-                        (click)="selezionaTaglia('38')">38</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '39', 'btn-primary': tagliaSelezionata === '39'}"
-                        (click)="selezionaTaglia('39')">39</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '40', 'btn-primary': tagliaSelezionata === '40'}"
-                        (click)="selezionaTaglia('40')">40</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '41', 'btn-primary': tagliaSelezionata === '41'}"
-                        (click)="selezionaTaglia('41')">41</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '42', 'btn-primary': tagliaSelezionata === '42'}"
-                        (click)="selezionaTaglia('42')">42</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '43', 'btn-primary': tagliaSelezionata === '43'}"
-                        (click)="selezionaTaglia('43')">43</button>
-                    <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '44', 'btn-primary': tagliaSelezionata === '44'}"
-                        (click)="selezionaTaglia('44')">44</button>
-                        <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '45', 'btn-primary': tagliaSelezionata === '45'}"
-                        (click)="selezionaTaglia('45')">45</button>
-                        <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '46', 'btn-primary': tagliaSelezionata === '46'}"
-                        (click)="selezionaTaglia('46')">46</button>
-                        <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '47', 'btn-primary': tagliaSelezionata === '47'}"
-                        (click)="selezionaTaglia('47')">47</button>
-                        <button type="button" class="btn"
-                        [ngClass]="{'btn-outline-primary': tagliaSelezionata !== '48', 'btn-primary': tagliaSelezionata === '48'}"
-                        (click)="selezionaTaglia('48')">48</button>
-                </div>
-                <!-- Menu a tendina visibile su schermi piccoli -->
-                <div class="dropdown d-md-none">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownTaglieScarpe"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Seleziona numero <span *ngIf="tagliaSelezionata">({{ tagliaSelezionata }})</span>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownTaglieScarpe">
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('36')">36</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('37')">37</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('38')">38</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('39')">39</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('40')">40</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('41')">41</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('42')">42</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('43')">43</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('44')">44</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('45')">45</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('46')">46</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('47')">47</a></li>
-                        <li><a class="dropdown-item" (click)="selezionaTaglia('48')">48</a></li>
-                    </ul>
                 </div>
             </div>
-            <!-- Fine bottoni numero scarpe -->
 
-            <!-- Menu a tendina per quantità -->
-            <div class="mb-3">
-                <label for="quantita" class="form-label">Quantità</label>
-                <select id="quantita" class="form-select w-25 d-md-inline-flex" [(ngModel)]="quantitaSelezionata">
-                    <option *ngFor="let qty of [1,2,3,4,5,6,7,8,9,10]" [value]="qty">{{ qty }}</option>
-                </select>
-            </div>
-            <!-- Fine menu a tendina per quantità -->
+            <!-- Colonna per titolo, categoria, descrizione e il resto -->
+            <div class="col-md-6 text-center title-category-description-column">
+                <div class="title-category d-none d-md-block">
+                    <h1><strong>{{ prodotto.title }}</strong></h1>
+                    <p><strong>{{ prodotto.category.name }}</strong></p>
+                </div>
 
-            <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
-            <a class="btn btn-primary" (click)="aggiungiAlCarrello()">
-                {{ itemInCart ? '' : 'Add to cart' }}
-                <ng-container *ngIf="itemInCart" >
-                    <a class="btn btn-primary" >Add to cart</a>
-                    <a [routerLink]="['/cart']" class="btn btn-primary">View Cart</a>
-                </ng-container>
-            </a>
-            <div class="text-success" *ngIf="prodotto.addedToCart">
-                <i class="fa fa-check"></i>
-            </div>
-            <div class="text-danger" *ngIf="prodotto.addedToCart === false">
-                <i class="fa fa-times"></i>
+                <div class="description-other">
+                    <!-- Descrizione visibile su dispositivi grandi -->
+                    <div class="d-none d-md-block">
+                        <p>{{ prodotto.description }}</p>
+                    </div>
+
+                    <!-- Descrizione espandibile per dispositivi piccoli -->
+                    <div class="d-md-none mb-3">
+                        <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#descrizioneContent" aria-expanded="false"
+                            aria-controls="descrizioneContent">
+                            Descrizione
+                        </button>
+                        <div class="collapse description-dropdown-content" id="descrizioneContent">
+                            <p>{{ prodotto.description }}</p>
+                        </div>
+                    </div>
+
+                    <span class="star-rating">
+                        <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
+                            <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
+                        </ng-container>
+                    </span>
+
+                    <!-- Sezione per le taglie -->
+                    <div *ngIf="prodotto.idCategory === 1 || prodotto.idCategory === 4" class="mb-3">
+                        <div class="btn-group d-none d-md-inline-flex" role="group">
+                            <button *ngFor="let taglia of getTaglie(prodotto.idCategory)" type="button" class="btn"
+                                [ngClass]="{'btn-outline-primary': tagliaSelezionata !== taglia, 'btn-primary': tagliaSelezionata === taglia}"
+                                (click)="selezionaTaglia(taglia)">
+                                {{ taglia }}
+                            </button>
+                        </div>
+                        <div class="dropdown d-md-none">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownTaglie"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Seleziona taglia <span *ngIf="tagliaSelezionata">({{ tagliaSelezionata }})</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownTaglie">
+                                <li *ngFor="let taglia of getTaglie(prodotto.idCategory)">
+                                    <a class="dropdown-item" (click)="selezionaTaglia(taglia)">{{ taglia }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Menu a tendina per quantità -->
+                    <div class="mt-5 text-center">
+                        <label for="quantita" class="form-label fs-6 mb-0">Quantità:</label>
+                    </div>
+
+                    <div class="mb-5 d-flex justify-content-center align-items-center">
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownQuantita"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Seleziona quantità <span *ngIf="quantitaSelezionata">({{ quantitaSelezionata }})</span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownQuantita">
+                                <li *ngFor="let qty of [1,2,3,4,5,6,7,8,9,10]">
+                                    <a class="dropdown-item" (click)="quantitaSelezionata = qty">{{ qty }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
+                    <div class="mb-3">
+                        <button class="btn btn-primary" style="height: 37.6px; width: 45%;" (click)="aggiungiAlCarrello()">Aggiungi al
+                            carrello</button>
+                        <button *ngIf="itemInCart" class="btn btn-secondary ms-2" style="height: 37.6px; width: 45%;"
+                            [routerLink]="['/cart']">
+                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                viewBox="0 0 24 24">
+                                <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+                            </svg>
+                            Vedi carrello
+                        </button>
+
+                    </div>
+                    <div class="text-success" *ngIf="prodotto.addedToCart">
+                        <i class="fa fa-check"></i> Aggiunto al carrello
+                    </div>
+                    <div class="text-danger" *ngIf="prodotto.addedToCart === false">
+                        <i class="fa fa-times"></i> Non aggiunto al carrello
+                    </div>
+                </div>
             </div>
         </div>
     </div>

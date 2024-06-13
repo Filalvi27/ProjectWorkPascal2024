@@ -1,12 +1,49 @@
-.containers {
+.container {
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 2%;
     width: 90%; 
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 767.98px) {
+  #quantita {
+    width: 75% !important;
+  }
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .image-column {
+        order: 0;
+        flex: 1;
+    }
+
+    .title-category-description-column {
+        order: 1;
+        flex: 1;
+        text-align: left;
+    }
+    
+    .title-category {
+        order: 1;
+    }
+
+    .description-other {
+        order: 2;
+    }
+
+    #quantita {
+        width: 25% !important;
+    }
 }
 
 .star-rating {
@@ -32,5 +69,45 @@
     color: #ffcc00;
     width: 50%;
     overflow: hidden;
+}
+
+.dropdown-toggle {
+    background-color: transparent;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 0.25rem;
+}
+
+.dropdown-toggle:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.dropdown-menu {
+    width: 100%;
+    border-radius: 0.25rem;
+}
+
+.dropdown-item {
+    color: black;
+}
+
+.dropdown-item:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-select {
+    border: none;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    border-radius: 0.25rem;
+}
+
+.form-select option {
+    background-color: white;
+    color: black;
 }
 
