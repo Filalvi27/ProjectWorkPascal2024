@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 
 import  {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
+import { ProdottiService } from '../../../services/prodotti.service';
+
 @Component({
   selector: 'app-search-bar',
   standalone: true,
@@ -15,7 +17,7 @@ import  {FormsModule, ReactiveFormsModule} from '@angular/forms'
   styleUrl: './search-bar.component.css',
 })
 export class SearchBarComponent {
-  constructor(public ricercaNomeComponent: RicercaNomeComponent, private router:Router) {}
+  constructor(public ricercaNomeComponent: RicercaNomeComponent, private router:Router, private prodottiService:ProdottiService) {}
 
   onKeydown(event: KeyboardEvent, form: HTMLFormElement) {
     // Verifica se il tasto premuto è Enter
@@ -26,9 +28,10 @@ export class SearchBarComponent {
       const searchInputElement = searchInput as HTMLInputElement;
       const searchText = searchInputElement.value.trim();
       if (searchText) {
-        this.navigateAndClose('/ricerca');
         console.log(searchText);
         this.ricercaNomeComponent.onSubmit(form);
+        this.navigateAndClose('/ricerca');
+
       }
       
       // this.navigateAndClose('/ricerca');
@@ -42,11 +45,11 @@ export class SearchBarComponent {
     const searchInputElement = searchInput as HTMLInputElement;
     const searchText = searchInputElement.value.trim();
     if (searchText) {
-      this.navigateAndClose('/ricerca');
       console.log(searchText);
       this.ricercaNomeComponent.onSubmit(form);
+      this.navigateAndClose('/ricerca');
+      this.prodottiService.setCan(true)
     }
-
 
   }
 

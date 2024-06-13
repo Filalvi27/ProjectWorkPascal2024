@@ -19,39 +19,52 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './ricerca-nome.component.html',
   styleUrls: ['./ricerca-nome.component.css'],
 })
-export class RicercaNomeComponent{
+export class RicercaNomeComponent implements OnInit {
   prodotti: prodottoModel[] = [];
-  search: string = '';
   searchText: string = '';
   selectedCategory: number = 0;
   selectedCategoryNome: string = 'All';
+  isLoading: boolean = false;
   
-  constructor( private prodottiService: ProdottiService, private route: ActivatedRoute) {}
+  constructor(private prodottiService: ProdottiService, private route: ActivatedRoute) {}
 
   can: boolean = this.prodottiService.getCan();
 
-  onSubmit(form: HTMLFormElement) {
-    const searchInput = form.querySelector('input[type="search"]');
-    this.searchText = (searchInput as HTMLInputElement).value;
-    console.log(this.searchText);
-
-    (searchInput as HTMLInputElement).value = '';
-    console.log(this.selectedCategoryNome);
-      console.log('Cerca da header: ' + this.searchText);
-      this.prodottiService.setSearchValue(this.searchText, this.selectedCategory);
-      this.prodottiService.setCan(true);
-      this.cerca();
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.searchText = params['searchText'] || '';
+      this.selectedCategory = params['selectedCategory'] || 0;
+      if (this.searchText) {
+        this.cerca();
+      }
+    });
   }
 
-  
+  onSubmit(form: HTMLFormElement) {
+    this.isLoading = true;
+
+    const searchInput = form.querySelector('input[type="search"]');
+    this.searchText = (searchInput as HTMLInputElement).value;
+    (searchInput as HTMLInputElement).value = '';
+    
+    this.prodottiService.setSearchValue(this.searchText, this.selectedCategory);
+    this.prodottiService.setCan(true);
+    this.cerca();
+  }
 
   cerca() {
     this.prodottiService.getSearch(1).subscribe(
       (prodotti) => {
         this.prodotti = prodotti;
+        this.isLoading = false;//
         console.log(this.prodotti);
+        console.log(this.prodotti.length);
+        console.log(this.prodottiService.can)
       },
-      (error) => console.error(error)
+      (error) => {
+        console.error(error);
+        this.isLoading = false;
+      }
     );
   }
 }

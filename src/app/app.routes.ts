@@ -8,6 +8,7 @@ import { AboutUsComponent } from './components/aboutus/aboutus.component';
 import { ResocontoComponent } from './components/resoconto/resoconto.component';
 import { RicercaCategoriaComponent } from './components/ricerca-categoria/ricerca-categoria.component';
 import { RicercaNomeComponent } from './components/ricerca-nome/ricerca-nome.component';
+import { SearchBarComponent } from './components/ricerca-nome/search-bar/search-bar.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
