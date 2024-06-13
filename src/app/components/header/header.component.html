@@ -21,10 +21,10 @@
               <div class="paste-button">
                 <button class="button">Filters &nbsp; ▼</button>
                 <div class="dropdown-content">
-                  <a id="top" [routerLink]="['/']">All</a>
-                  <a id="middle" [routerLink]="['/ricercaCategoria']"
-                    >Categories</a
-                  >
+                  <!-- <a id="top" [routerLink]="['/']" (click)="closeDropdown()">All</a>
+                  <a id="middle"  [routerLink]="['/ricercaCategoria']" (click)="closeDropdown()">Categories</a> -->
+                  <a id="top" (click)="navigateAndClose('/')">All</a>
+                  <a id="middle"  (click)="navigateAndClose('/ricercaCategoria')">Categories</a>
                 </div>
               </div>
             </div>
@@ -34,11 +34,11 @@
     </div>
   </div>
 </nav>
-
+  
 <div class="collapse" id="navbarToggleExternalContent">
   <div class="scomparsa bg-dark p-4">
     <div class="input">
-      <button (click)="onHome()" [routerLink]="['/']" class="value">
+      <button (click)="navigateAndClose('/')" class="value">
         <svg
           class="w-6 h-6 text-gray-800 dark:text-white"
           aria-hidden="true"
@@ -56,10 +56,9 @@
             d="m4 12 8-8 8 8M6 10.5V19a1 1 0 0 0 1 1h3v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h3a1 1 0 0 0 1-1v-8.5"
           />
         </svg>
-
         Home
       </button>
-      <button [routerLink]="['/cart']" class="value">
+      <button (click)="navigateAndClose('/cart')" class="value">
         <svg
           class="w-6 h-6 text-gray-800 dark:text-white"
           aria-hidden="true"
@@ -77,10 +76,9 @@
             d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"
           />
         </svg>
-
         Carrello
       </button>
-      <button [routerLink]="['/aboutus']" class="value">
+      <button (click)="navigateAndClose('/aboutus')" class="value">
         <svg
           class="w-6 h-6 text-gray-800 dark:text-white"
           aria-hidden="true"

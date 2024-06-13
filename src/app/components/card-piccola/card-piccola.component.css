@@ -1,3 +1,5 @@
+
+
 .container-fluid {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -9,6 +11,15 @@
   border: 3px solid black; 
 }
 
+.card:hover .card-img-top {
+  opacity: 0.5;
+}
+
+.card:hover {
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}
 .card-title {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -60,6 +71,17 @@
   width: 18%;
   padding: 0.5rem;
 }
+
+.container-fluid {
+  overflow-x: hidden;
+}
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+
 
 @media (max-width: 1400px) {
   .fixed-card {
