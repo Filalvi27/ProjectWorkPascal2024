@@ -1,8 +1,46 @@
-.login {
-  color: #000;
-  letter-spacing: 2px;
-  font-weight: bold;
-  font-size: x-large;
+/* Stili generali */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.container_prodotti {
+  width: 100%;
+}
+
+.table-container {
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th, .table td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #e3e3e3;
+}
+
+.table img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 }
 
 .card, .page {
@@ -14,6 +52,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   gap: 15px;
+  width: 100%; /* Assicurarsi che le carte siano al 100% della larghezza del contenitore */
 }
 
 .inputBox {
@@ -54,9 +93,9 @@
 
 .split {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 .btn-action {
@@ -84,51 +123,42 @@
   border-radius: 5px; 
 }
 
-/* Stili generali */
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 40px;
-}
+/* Media queries per schermi più piccoli */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
 
-.form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 50%;
-}
+  .form-container {
+    width: 100%;
+  }
 
-.container_prodotti {
-  width: 40%;
-}
+  .container_prodotti {
+    width: 100%;
+  }
 
-.table-container {
-  width: 100%;
-}
+  .card, .page {
+    width: 100%;
+  }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
+  .split {
+    flex-direction: column;
+  }
 
-.table th, .table td {
-  text-align: left;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
+  .inputBox input {
+    font-size: 0.9em;
+    padding: 8px;
+  }
 
-.table th {
-  background-color: #e3e3e3;
-}
+  .btn-action {
+    width: 100%;
+    font-size: 0.9em;
+    padding: 12px;
+  }
 
-.table img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-}
-
-.checkout {
-  height: 50px; 
-  width: 120px; 
+  .table {
+    font-size: 0.9em;
+  }
 }
