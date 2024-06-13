@@ -1,15 +1,40 @@
-<div class="container-fluid mt-2 mb-2 px-2">
+<!-- <div class="container-fluid mt-2 mb-2 px-2 sidebar">
   <div class="row justify-content-center">
     <div class="fixed-card mb-4" *ngFor="let prodotto of prodotti">
       <div class="card h-100">
         <div [routerLink]="['/card', prodotto.id]" style="cursor: pointer;">
-          <img src="{{setImage(prodotto)}}" class="img-fluid" alt="" style="width:100px;height:100px; float: left; margin-right: 10px;">
+          <img src="{{setImage(prodotto)}}" class="img-fluid imm" alt="">
           <div class="card-body">
             <div>
-              <h5 class="card-title" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+              <h5 class="card-title text-center" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
                 {{prodotto.title}}
               </h5>
-              <p class="card-text" style="float: left;">Price: {{prodotto.price | currency}}</p>
+              <p class="card-text text-center">Price: {{prodotto.price | currency}}</p>
+              <div class="star-rating" style="clear: both;">
+                <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
+                  <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
+                </ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ -->
+ <div class="container-fluid mt-2 mb-2 px-2 sidebar">
+  <div class="row justify-content-center">
+    <div class="fixed-card mb-4" *ngFor="let prodotto of prodotti">
+      <div class="card h-100">
+        <div [routerLink]="['/card', prodotto.id]" style="cursor: pointer;">
+          <img src="{{setImage(prodotto)}}" class="img-fluid imm" alt="">
+          <div class="card-body">
+            <div>
+              <h5 class="card-title text-center" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+                {{prodotto.title}}
+              </h5>
+              <p class="card-text text-center">Price: {{prodotto.price | currency}}</p>
               <div class="star-rating" style="clear: both;">
                 <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
                   <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>

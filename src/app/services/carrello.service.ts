@@ -10,9 +10,34 @@ export class CarrelloService {
 
   constructor() {}
 
+  
+  private saveTotaleLocalStorage() {
+    localStorage.setItem('totale', JSON.stringify(this.totale));
+  }
+
+  private loadTotaleLocalStorage() {
+    const storedTotale = localStorage.getItem('totale');
+    if (storedTotale) {
+      this.totale = JSON.parse(storedTotale);
+    }
+  }
+
+
+  private saveCarrelloLocalStorage() {
+    localStorage.setItem('carrello', JSON.stringify(this.carrello));
+  }
+
+  private loadCarrelloLocalStorage() {
+    const storedCarrello = localStorage.getItem('carrello');
+    if (storedCarrello) {
+      this.carrello = JSON.parse(storedCarrello);
+    }
+  }
+
   getCarrello(): prodottoModel[] {
     console.log('carrello service');
     console.log('asd' + this.carrello);
+    this.loadCarrelloLocalStorage();
     return this.carrello;
   }
 
@@ -34,6 +59,7 @@ export class CarrelloService {
       this.carrello.push(prodotto);
       console.log(this.carrello);
     }
+    this.saveCarrelloLocalStorage();
   }
 
   filtraCarrello(prodotto: prodottoModel): prodottoModel[] {
@@ -50,6 +76,7 @@ export class CarrelloService {
         this.carrello = this.filtraCarrello(prodotto);
       }
     }
+    this.saveCarrelloLocalStorage();
   }
 
   rimuoviCarrello(prodotto: prodottoModel) {
@@ -60,10 +87,13 @@ export class CarrelloService {
         this.carrello = this.filtraCarrello(prodotto);
       }
     }
+    this.saveCarrelloLocalStorage();
+
   }
 
   eliminaCarrello(prodotto: prodottoModel) {
     this.carrello = this.filtraCarrello(prodotto);
+    this.saveCarrelloLocalStorage();
   }
 
   isItemInCart(id: number, taglia: string): boolean {
@@ -72,10 +102,12 @@ export class CarrelloService {
 
   setTotale(totale: number) {
     this.totale = totale;
+    this.saveTotaleLocalStorage();
   }
 
   getTotale(): number {
-    console.log(this.totale);
+    // console.log(this.totale);
+     this.loadTotaleLocalStorage();
     return this.totale;
   }
 }
