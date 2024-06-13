@@ -24,6 +24,7 @@ export class HomeComponent {
 
   constructor(private prodottoService: ProdottiService) {
     this.loadCards(this.currentPage);
+    this.prodottoService.setCan(false);
   }
 
   loadCards(page: number) {

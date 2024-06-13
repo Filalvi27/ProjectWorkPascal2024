@@ -2,9 +2,9 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <form #searchForm class="form-inline" (ngSubmit)="ricercaNomeComponent.onSubmit(searchForm)">
+      <form (keydown)="onKeydown($event,searchForm)" #searchForm class="form-inline">
         <div class="input-group w-100">
-          <input class="form-control form-control-lg" type="search" placeholder="Search" ngModel name="query">
+          <input class="form-control form-control-lg" type="search" placeholder="Search" name="query" required>
           <div class="input-group-append">
             <a (click)="ricercaNomeComponent.onSubmit(searchForm)" class="btn btn-primary btn-lg" [routerLink]="['/ricerca']">Cerca</a>
           </div>

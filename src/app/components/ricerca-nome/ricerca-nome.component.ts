@@ -25,12 +25,14 @@ export class RicercaNomeComponent implements OnInit {
   searchText: string = '';
   selectedCategory: number = 0;
   selectedCategoryNome: string = 'All';
-
+  
   constructor( private prodottiService: ProdottiService, private route: ActivatedRoute) {}
 
   can: boolean = this.prodottiService.getCan();
 
   onSubmit(form: HTMLFormElement) {
+    
+
     const searchInput = form.querySelector('input[type="search"]');
     this.searchText = (searchInput as HTMLInputElement).value;
     (searchInput as HTMLInputElement).value = '';
@@ -41,7 +43,11 @@ export class RicercaNomeComponent implements OnInit {
     this.ngOnInit();
   }
 
+  
+
   ngOnInit() {
+    
+  
     this.prodottiService.getSearch(1).subscribe(
       (prodotti) => {
         this.prodotti = prodotti;

@@ -34,7 +34,7 @@ export class ProdottiService {
   getSearch(n: number): Observable<prodottoModel[]> {
     return this.http
       .get<{ result: prodottoModel[] }>(
-        `${this.apiUrl}?search=${this.ricerca}&page=${n}&pagesize=10`
+        `${this.apiUrl}?search=${this.ricerca}&page=${n}&pagesize=99`
       )
       .pipe(
         map((response) => response.result) 

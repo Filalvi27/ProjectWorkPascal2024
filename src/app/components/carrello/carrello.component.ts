@@ -5,7 +5,7 @@ import { ImgService } from '../../services/img.service';
 import { CarrelloService } from '../../services/carrello.service';
 import { RouterModule } from '@angular/router';
 import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
-
+import { ProdottiService } from '../../services/prodotti.service';
 
 @Component({
   selector: 'app-carrello',
@@ -17,9 +17,9 @@ import { RicercaNomeComponent } from '../ricerca-nome/ricerca-nome.component';
 export class CarrelloComponent {
   carrello: prodottoModel[];
 
-  constructor(private service: ImgService, private serviceC: CarrelloService) {
+  constructor(private service: ImgService, private serviceC: CarrelloService,private serviceP:ProdottiService) {
     this.carrello = this.serviceC.getCarrello() ?? [];
-
+    this.serviceP.setCan(false);
     console.log(this.carrello);
   }
 
