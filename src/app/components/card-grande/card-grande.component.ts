@@ -90,4 +90,14 @@ export class CardGrandeComponent {
     }
     return stars;
   }
+
+  getTaglie(idCategory: number): string[] {
+    if (idCategory === 1) {
+        return ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+    } else if (idCategory === 4) {
+        return ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48'];
+    }
+    return [];
+}
+
 }

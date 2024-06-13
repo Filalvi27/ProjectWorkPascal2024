@@ -1,12 +1,48 @@
-.containers {
+.container {
     margin-top: 2%;
     margin-left: 2%;
     margin-right: 2%;
     width: 90%; 
     height: auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 767.98px) {
+  #quantita {
+    width: 75% !important; /* Applica larghezza del 75% per schermi piccoli */
+  }
+}
+
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .image-column {
+        order: 0;
+        flex: 1;
+    }
+
+    .title-category-description-column {
+        order: 1;
+        flex: 1;
+        text-align: left;
+    }
+    
+    .title-category {
+        order: 1;
+    }
+
+    .description-other {
+        order: 2;
+    }
+    #quantita {
+        width: 25% !important; /* Applica larghezza del 25% per schermi grandi */
+      }
 }
 
 .star-rating {
@@ -34,3 +70,48 @@
     overflow: hidden;
 }
 
+/* Default state of the dropdown button */
+.dropdown-toggle {
+    background-color: transparent; /* Matches the default button color */
+    color: #007bff; /* Default text color */
+    border: 1px solid #007bff; /* Border color matches the primary button color */
+    border-radius: 0.25rem; /* Matches Bootstrap's button border-radius */
+}
+
+/* Hover state of the dropdown button */
+.dropdown-toggle:hover {
+    background-color: #007bff; /* Background color on hover */
+    color: white; /* White text on hover */
+    border-color: #007bff; /* Border color remains the same */
+}
+
+/* Styling for the dropdown menu */
+.dropdown-menu {
+    width: 100%;
+    border-radius: 0.25rem;
+}
+
+/* Item styling within the dropdown */
+.dropdown-item {
+    color: black; /* Default text color */
+}
+
+.dropdown-item:hover {
+    background-color: #007bff; /* Primary color on hover */
+    color: white; /* White text on hover */
+}
+
+/* For select dropdown */
+.form-select {
+    border: none;
+    background-color: #007bff; /* Matches primary button color */
+    color: white; /* White text color */
+    text-align: center;
+    border-radius: 0.25rem; /* Matches Bootstrap's button border-radius */
+}
+
+/* Option styling */
+.form-select option {
+    background-color: white; /* Default background */
+    color: black; /* Default text color */
+}
