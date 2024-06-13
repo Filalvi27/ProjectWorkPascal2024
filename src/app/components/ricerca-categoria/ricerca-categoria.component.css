@@ -25,6 +25,7 @@
 }
 
 .formCategory {
+  width: 100%;
   margin: 10px;
   padding-bottom: 10px;
 }
@@ -87,3 +88,4 @@
   border-bottom-right-radius: 300px;
   box-shadow: 3px 3px 0px 3px #cac7c7;
 }
+

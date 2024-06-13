@@ -106,7 +106,7 @@
 
                     <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
                     <div class="mb-3">
-                        <button class="btn btn-primary" style="height: 37.6px; width: 45%;" (click)="aggiungiAlCarrello()">Aggiungi al
+                        <button class="btn btn-primary bottoneCarrello" style="height: 37.6px; width: 45%;" (click)="aggiungiAlCarrello()">Aggiungi al
                             carrello</button>
                         <button *ngIf="itemInCart" class="btn btn-secondary ms-2" style="height: 37.6px; width: 45%;"
                             [routerLink]="['/cart']">
