@@ -17,7 +17,7 @@ export class ResocontoComponent {
   ordini: utenteCheckoutModel[] = this.CheckoutService.getOrdini() || [];
 
   constructor(private CheckoutService: CheckoutService) {
-    console.log(this.ordini + 'nigga');
+    console.log(this.ordini + 'ordini');
   }
 
   get orderTotal(): number {

@@ -1,3 +1,5 @@
+<app-ricerca-nome></app-ricerca-nome>
+
 <div class="d-flex justify-content-center align-items-center">
     <div *ngIf="prodotto" class="container text-center">
         <div class="row justify-content-center">
@@ -10,7 +12,7 @@
             <!-- Colonna per la foto -->
             <div class="col-md-6 text-center image-column">
                 <div id="carouselExampleControls" class="carousel slide border border-dark rounded mb-5"
-                    data-bs-ride="carousel" data-bs-interval="3000">
+                    data-bs-ride="carousel" data-bs-interval="3000" data-bs-pause="false" data-bs-wrap="true">
                     <div class="carousel-inner rounded">
                         <div *ngFor="let image of getImmagini(prodotto); let i = index" class="carousel-item"
                             [ngClass]="{'active': i === 0}">
@@ -104,7 +106,7 @@
 
                     <p><strong>Prezzo:</strong> {{ prodotto.price | currency : 'EUR'}}</p>
                     <div class="mb-3">
-                        <button class="btn btn-primary" style="height: 37.6px; width: 45%;" (click)="aggiungiAlCarrello()">Aggiungi al
+                        <button class="btn btn-primary bottoneCarrello" style="height: 37.6px; width: 45%;" (click)="aggiungiAlCarrello()">Aggiungi al
                             carrello</button>
                         <button *ngIf="itemInCart" class="btn btn-secondary ms-2" style="height: 37.6px; width: 45%;"
                             [routerLink]="['/cart']">

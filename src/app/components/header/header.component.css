@@ -8,7 +8,6 @@
 }
 
 
-
 .search-wrapper {
   display: flex;
   align-items: center;
@@ -193,3 +192,50 @@
 .paste-button:hover .dropdown-content {
   display: block;
 }
+
+
+@media (max-width: 767.98px) {
+  .paste-button{
+    width: auto;
+    
+  }
+  .search{
+    margin-bottom: 20px;
+  }
+  }
+  
+@media (min-width: 768px) {
+  
+  }
+
+  /*se ocane ha un cane di chi è il cane? di
+  
+  
+  uel porcaccio di DIO */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
