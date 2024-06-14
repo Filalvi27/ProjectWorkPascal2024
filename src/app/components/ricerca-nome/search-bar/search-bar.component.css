@@ -25,3 +25,10 @@
   background-color: #0056b3;
   border-color: #004085;
 }
+
+.rounded-custom {
+  border-top-right-radius: 0.25rem; 
+  border-bottom-right-radius: 0.25rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
