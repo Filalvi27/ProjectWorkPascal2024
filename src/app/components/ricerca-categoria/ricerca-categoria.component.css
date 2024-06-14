@@ -89,3 +89,50 @@
   box-shadow: 3px 3px 0px 3px #cac7c7;
 }
 
+@media screen and (max-width: 768px) {
+  .container{
+    padding-top: 20px;
+    padding-bottom: 60px;
+  }
+
+  .form-check{
+    float: none;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center;
+  }
+
+  .btn_form{
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .formCategory{
+    width: 100%;
+    margin: 5px;
+    padding-bottom: 5px;
+  }
+
+  .radio-inputs{
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+    width: 100%; /*controlla*/
+  }
+  
+  .radio-inputs .radio .name{
+    flex: 1 1 100%;
+    padding: 0.5rem;
+  }
+
+  .radio-inputs .radio input:checked + .name::after,
+  .radio-inputs .radio input:checked + .name::before {
+    width: 6px;
+    height: 6px;
+  }
+
+  .btn-action {
+    width: 100px;
+    font-size: 10px;
+    padding: 12px;
+  }
+}

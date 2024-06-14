@@ -23,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class CardGrandeComponent {
   prodotto: prodottoModel | undefined;
-  tagliaSelezionata: string | number = 'S'; // Default to "S" for clothing
+  tagliaSelezionata: string | number = 'XS'; // Default to "S" for clothing
   quantitaSelezionata: number = 1;
   itemInCart: boolean = false;
 
@@ -35,7 +35,7 @@ export class CardGrandeComponent {
       next: (data: prodottoModel) => {
         this.prodotto = data;
         if (this.prodotto.idCategory === 4) {
-          this.tagliaSelezionata = '38'; // Default shoe size
+          this.tagliaSelezionata = '36'; // Default shoe size
         }
         this.checkItemInCart();
       },
