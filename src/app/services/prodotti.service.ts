@@ -27,6 +27,16 @@ export class ProdottiService {
       );
   }
 
+  getTotProdotti(n: number): Observable<number> {
+    return this.http
+      .get<{ totalRecordsCount: number }>(
+        this.ricerca != '' ? 
+        `${this.apiUrl}?search=${this.ricerca}&page=${n}&pagesize=10`
+        :`${this.apiUrl}?page=${n}&pagesize=10`
+      )
+      .pipe(map((response) => response.totalRecordsCount));
+  }
+
   getProdotto(id: number): Observable<prodottoModel> {
     return this.http.get<prodottoModel>(`${this.apiUrl}/${id}`);
   }
@@ -35,8 +45,8 @@ export class ProdottiService {
     return this.http
       .get<{ result: prodottoModel[] }>(
         this.ricerca != '' ? 
-        `${this.apiUrl}?search=${this.ricerca}&page=${n}&pagesize=99`
-        :`${this.apiUrl}?page=${n}&pagesize=99`
+        `${this.apiUrl}?search=${this.ricerca}&page=${n}&pagesize=10`
+        :`${this.apiUrl}?page=${n}&pagesize=10`
       )
       .pipe(
         map((response) => response.result) 
@@ -46,9 +56,9 @@ export class ProdottiService {
   getCategory(id: number, n: number) {
     return this.http
       .get<{ result: prodottoModel[] }>(
-        `${this.apiUrl2}/categories/${id}/products?page=${n}&pagesize=${99}`
+        `${this.apiUrl2}/categories/${id}/products?page=${n}&pagesize=${10}`
       )
-      .pipe(
+      .pipe(  
         map((response) =>
           response.result.map((prodotto) => {
             return prodotto;

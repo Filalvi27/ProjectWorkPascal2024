@@ -23,7 +23,12 @@ export class RicercaCategoriaComponent {
   constructor(private prodottoService: ProdottiService) {
     this.loadCards(this.id, this.currentPage);
 
-    this.prodottoService.getTotal(this.id, this.currentPage).subscribe({
+  }
+
+  loadCards(id: number, page: number) {
+    this.totArray = [];
+    this.id = id;
+    this.prodottoService.getTotal(id,page).subscribe({
       next: (t) => {
         this.tot = t;
         this.tot = Math.ceil(this.tot / 10);
@@ -36,13 +41,7 @@ export class RicercaCategoriaComponent {
       error: (error) => console.error(error),
     });
 
-    // this.tot = Math.ceil(this.tot / 10);
-    // for (let i = 0; i < this.tot; i++) {
-    //   this.totArray.push(i + 1);
-    // }
-  }
 
-  loadCards(id: number, page: number) {
     this.prodottoService.getCategory(id, page).subscribe({
       next: (prodotti) => (this.prodotti = prodotti),
       error: (error) => console.error(error),
@@ -53,8 +52,8 @@ export class RicercaCategoriaComponent {
     //   error: error => console.error(error)
     // });
 
-    // console.log(this.tot);
-    // console.log(this.prodotti);
+    console.log(this.tot);
+    console.log(this.prodotti);
   }
 
   onPageSelect(page: number) {
@@ -62,17 +61,9 @@ export class RicercaCategoriaComponent {
     this.loadCards(this.id, page);
   }
 
-  onSubmit() {
-    let search: number = 0;
-    let element: HTMLInputElement;
-    for (let i = 1; i < 6; i++) {
-      element = <HTMLInputElement>document.getElementById(`categoria${i}`);
-      if (element.checked) {
-        search = Number(element.value);
-      }
-    }
-    console.log(search);
-    4;
-    this.loadCards(search, 1);
+  onSubmit(id:number) {
+    
+    this.currentPage = 1;
+    this.loadCards(id, 1);
   }
 }

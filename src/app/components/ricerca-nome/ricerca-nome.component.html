@@ -1,8 +1,39 @@
 <app-search-bar></app-search-bar>
 
 <div *ngIf="isLoading">Caricamento...</div>
-<ng-container *ngIf="!isLoading && prodotti.length > 0">
+<ng-container *ngIf="!isLoading && prodotti.length >= 0">
   <div *ngIf="can">
-    <app-card-piccola [prodotti]="this.prodotti" onload="console.log('pagina caricata')"></app-card-piccola>
+    <app-card-piccola [prodotti]="this.prodotti"></app-card-piccola>
   </div>
-</ng-container>
+</ng-container> 
+
+
+<div class="container" *ngIf="can">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <ng-container *ngIf="totArray.length >1">
+
+        <li class="page-item" (click)="onPageSelect(currentPage - 1)" [class.disabled]="currentPage === 1"
+          *ngIf="currentPage > 1">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+
+
+        <ng-container *ngFor="let i of totArray; index as j">
+          <li class="page-item" [class.active]="currentPage === j+1"><a class="page-link"
+              (click)="onPageSelect(j+1)">{{j+1}}</a></li>
+        </ng-container>
+
+        <li class="page-item" (click)="onPageSelect(currentPage + 1)" [class.disabled]="currentPage === totArray.length"
+          *ngIf="currentPage < totArray.length">
+          <a class="page-link" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ng-container>
+
+    </ul>
+  </nav>
+</div>
