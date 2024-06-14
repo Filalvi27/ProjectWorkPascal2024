@@ -11,7 +11,7 @@ import { RicercaNomeComponent } from './components/ricerca-nome/ricerca-nome.com
 import { SearchBarComponent } from './components/ricerca-nome/search-bar/search-bar.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: RicercaNomeComponent },
   { path: 'formAnagrafici', component: FormAnagraficiComponent },
   { path: 'cart', component: CarrelloComponent },
   { path: 'card/:id', component: CardGrandeComponent },

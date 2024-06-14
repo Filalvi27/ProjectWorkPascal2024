@@ -34,13 +34,16 @@ export class RicercaNomeComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.searchText = params['searchText'] || '';
       this.selectedCategory = params['selectedCategory'] || 0;
-      if (this.searchText) {
+      console.dir(this.searchText)
+      //if (this.searchText) {
+        this.prodottiService.setCan(true);
+        this.prodottiService.setSearchValue(this.searchText, this.selectedCategory);
         this.cerca();
-      }
+      //}
     });
   }
 
-  onSubmit(form: HTMLFormElement) {
+  /*onSubmit(form: HTMLFormElement) {
     this.isLoading = true;
 
     const searchInput = form.querySelector('input[type="search"]');
@@ -50,7 +53,7 @@ export class RicercaNomeComponent implements OnInit {
     this.prodottiService.setSearchValue(this.searchText, this.selectedCategory);
     this.prodottiService.setCan(true);
     this.cerca();
-  }
+  }*/
 
   cerca() {
     this.prodottiService.getSearch(1).subscribe(

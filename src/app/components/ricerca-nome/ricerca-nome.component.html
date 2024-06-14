@@ -3,6 +3,6 @@
 <div *ngIf="isLoading">Caricamento...</div>
 <ng-container *ngIf="!isLoading && prodotti.length > 0">
   <div *ngIf="can">
-    <!-- <app-card-piccola [prodotti]="this.prodotti" onload="console.log('pagina caricata')"></app-card-piccola> -->
+    <app-card-piccola [prodotti]="this.prodotti" onload="console.log('pagina caricata')"></app-card-piccola>
   </div>
 </ng-container>

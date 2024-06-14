@@ -29,8 +29,8 @@ export class SearchBarComponent {
       const searchText = searchInputElement.value.trim();
       if (searchText) {
         console.log(searchText);
-        this.ricercaNomeComponent.onSubmit(form);
-        this.navigateAndClose('/ricerca');
+        //this.ricercaNomeComponent.onSubmit(form);
+        this.router.navigate(['/ricerca'],{queryParams:{searchText:searchText}})
 
       }
       
@@ -46,8 +46,8 @@ export class SearchBarComponent {
     const searchText = searchInputElement.value.trim();
     if (searchText) {
       console.log(searchText);
-      this.ricercaNomeComponent.onSubmit(form);
-      this.navigateAndClose('/ricerca');
+      //this.ricercaNomeComponent.onSubmit(form);
+      this.router.navigate(['/ricerca'],{queryParams:{searchText:searchText}})
       this.prodottiService.setCan(true)
     }
 
