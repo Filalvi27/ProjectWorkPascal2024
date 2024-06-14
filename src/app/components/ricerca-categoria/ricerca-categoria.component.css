@@ -110,14 +110,14 @@
 
   .formCategory{
     width: 100%;
-    margin: 5px;
+    margin: 0px;
     padding-bottom: 5px;
   }
 
   .radio-inputs{
     flex-direction: column;
-    padding: 1rem 0.5rem;
-    width: 100%; /*controlla*/
+    padding: 0rem 0rem;
+    width: 99%; /*controlla*/
   }
   
   .radio-inputs .radio .name{

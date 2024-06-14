@@ -94,8 +94,13 @@
 
 @media (max-width: 576px) {
   .fixed-card {
-    width: 100%;
-  }
+    width: 98%;
+    padding-right: 0;
+   }
+
+   .row{
+    margin-right: 0;
+   }  
 }
 
 .custom-alert {
