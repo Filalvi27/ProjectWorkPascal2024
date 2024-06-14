@@ -60,12 +60,12 @@ export class CardGrandeComponent {
   aggiungiAlCarrello() {
     if (this.prodotto) {
       const prodottoDaAggiungere = {
-        ...this.prodotto,
+        ...this.prodotto, // copia tutte le proprietà
         taglia: this.tagliaSelezionata.toString(),
         quantity: this.quantitaSelezionata,
       };
       this.serviceC.aggiungiCarello(prodottoDaAggiungere);
-      this.checkItemInCart(); // Recheck after adding/updating
+      this.checkItemInCart(); // fa un controllo generale dopo aver aggiunto/modificato
     }
 
     console.log('aggiungi al carrello/modifica carrello fatto');

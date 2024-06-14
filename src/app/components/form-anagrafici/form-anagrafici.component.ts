@@ -58,16 +58,17 @@ export class FormAnagraficiComponent {
 
   onSubmit() {
     if (this.inputForm.valid) {
+      const form = this.inputForm.value;
       const formData: utenteCheckoutModel = {
-        clientName: this.inputForm.value.clientName,
-        address: this.inputForm.value.address,
+        clientName: form.clientName,
+        address: form.address,
         totalPrice: this.totale,
-        email: this.inputForm.value.email,
+        email: form.email,
         payment: {
-          number: this.inputForm.value.paymentNumber,
-          ownerName: this.inputForm.value.paymentOwnerName,
-          expire: this.inputForm.value.paymentExpire,
-          cvv: this.inputForm.value.paymentCvv,
+          number: form.paymentNumber,
+          ownerName: form.paymentOwnerName,
+          expire: form.paymentExpire,
+          cvv: form.paymentCvv,
         },
         details: this.prodottiPiccoli,
       };

@@ -18,19 +18,23 @@ export class CarrelloComponent {
   carrello: prodottoModel[];
 
   constructor(private service: ImgService, private serviceC: CarrelloService,private serviceP:ProdottiService) {
-    this.carrello = this.serviceC.getCarrello() ?? [];
+    this.carrello = this.setCarrello() ?? [];
     this.serviceP.setCan(false);
     console.log(this.carrello);
   }
 
   incrementa(item: prodottoModel) {
     this.serviceC.aggiungi1AlCarrello(item);
-    this.carrello = this.serviceC.getCarrello();
+    this.carrello = this.setCarrello();
   }
 
   decrementa(item: prodottoModel) {
     this.serviceC.rimuoviCarrello(item);
-    this.carrello = this.serviceC.getCarrello();
+    this.carrello = this.setCarrello();
+  }
+
+  setCarrello() : prodottoModel[] {
+    return this.serviceC.getCarrello();
   }
 
   calcolaTotale() {
@@ -50,6 +54,6 @@ export class CarrelloComponent {
 
   elimina(item: prodottoModel) {
     this.serviceC.eliminaCarrello(item);
-    this.carrello = this.serviceC.getCarrello();
+    this.carrello = this.setCarrello();
   }
 }

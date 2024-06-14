@@ -1,4 +1,4 @@
-<div class="container-fluid mt-4 mb-2 px-2 sidebar" >
+<div class="container-fluid mt-4 mb-2 px-2 sidebar">
   <div class="row justify-content-center">
     <div *ngIf="prodotti.length === 0" class="alert text-center custom-alert" role="alert">
       <h4 class="alert-heading">Nessun Prodotto Trovato</h4>
@@ -7,18 +7,16 @@
     <div class="fixed-card mb-4" *ngFor="let prodotto of prodotti">
       <div class="card h-100 shadow-sm">
         <div [routerLink]="['/card', prodotto.id]" style="cursor: pointer;">
-          <img src="{{setImage(prodotto)}}" class="img-fluid imm" alt="">
+          <img [src]="setImage(prodotto)" class="img-fluid imm" alt="">
           <div class="card-body">
-            <div>
-              <h5 class="card-title text-center" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
-                {{prodotto.title}}
-              </h5>
-              <p class="card-text text-center">Price: {{prodotto.price | currency}}</p>
-              <div class="star-rating" style="clear: both;">
-                <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
-                  <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
-                </ng-container>
-              </div>
+            <h5 class="card-title text-center" (mouseenter)="onMouseEnter($event)" (mouseleave)="onMouseLeave($event)">
+              {{prodotto.title}}
+            </h5>
+            <p class="card-text text-center">Price: {{prodotto.price | currency}}</p>
+            <div class="star-rating">
+              <ng-container *ngFor="let star of getStars(prodotto.stars); let i = index">
+                <span class="star" [ngClass]="{'checked': star === 1, 'half': star === 0.5}">&#9733;</span>
+              </ng-container>
             </div>
           </div>
         </div>

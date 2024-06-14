@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RicercaNomeComponent } from '../ricerca-nome.component';
-
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
 import  {FormsModule, ReactiveFormsModule} from '@angular/forms'
-
 import { ProdottiService } from '../../../services/prodotti.service';
 
 @Component({
